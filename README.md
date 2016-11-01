@@ -1,1 +1,1 @@
-# Lazer-Chess
+# Laser-Chess
