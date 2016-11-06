@@ -19,7 +19,8 @@
         android:minHeight="55dp"
         android:minWidth="200dp"
         android:layout_above="@+id/highscore_but"
-        android:layout_alignStart="@+id/highscore_but" />
+        android:layout_alignStart="@+id/highscore_but"
+        android:layout_marginBottom="10dp" />
 
     <Button
         android:text="High Scores"
@@ -29,9 +30,20 @@
         android:minHeight="55dp"
         android:minWidth="200dp"
         android:layout_above="@+id/login_but"
-        android:layout_alignStart="@+id/login_but" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp" />
 
-    <Button
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:id="@+id/titleText"
+        android:textSize="45sp"/>
+
+    <com.facebook.login.widget.LoginButton
         android:text="Log In"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,16 +53,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:id="@+id/titleText"
-        android:textSize="40sp"/>
 
 
 </RelativeLayout>
