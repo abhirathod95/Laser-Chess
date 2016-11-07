@@ -39,6 +39,14 @@ public class MainActivity extends FragmentActivity {
         AppEventsLogger.activateApp(this);
         LoginButton loginButton = (LoginButton) findViewById(R.id.login_but);
 
+        AccessToken token = AccessToken.getCurrentAccessToken();
+        if (token == null){
+            //User logged out
+            loggedIn = false;
+        } else {
+            loggedIn = true;
+        }
+
         // Listener to track login/logout.
         AccessTokenTracker accessTokenTracker = new AccessTokenTracker() {
             @Override
