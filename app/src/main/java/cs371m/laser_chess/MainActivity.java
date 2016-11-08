@@ -149,13 +149,9 @@ public class MainActivity extends FragmentActivity {
         });
 
 
-
-
-
         // Listener for Host A Match button.
-        // Listener for Find A Match button.
         Button hostMatch = (Button) findViewById(R.id.hostmatch_but);
-        findMatch.setOnClickListener(new View.OnClickListener() {
+        hostMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!loggedIn){

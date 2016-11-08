@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Nov 07 22:25:31 CST 2016
+#Mon Nov 07 22:42:59 CST 2016
 210.set=ANDROID_RESOURCE
 14.set=ANDROID_RESOURCE
 180.file=/home/daniel/Laser-Chess/app/build/intermediates/res/resources-debug.ap_/res/anim/abc_popup_enter.xml
