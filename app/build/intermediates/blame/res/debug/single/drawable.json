@@ -24,24 +24,24 @@
         "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/drawable/com_facebook_auth_dialog_background.xml"
     },
     {
-        "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/drawable/messenger_button_white_bg_round.xml",
-        "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/drawable/messenger_button_white_bg_round.xml"
+        "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/drawable/notification_icon_background.xml",
+        "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/drawable/notification_icon_background.xml"
     },
     {
         "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_indicator_material.xml",
         "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/drawable/abc_ratingbar_indicator_material.xml"
     },
     {
-        "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/drawable/notification_icon_background.xml",
-        "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/drawable/notification_icon_background.xml"
-    },
-    {
-        "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/drawable/abc_ic_go_search_api_material.xml",
-        "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/drawable/abc_ic_go_search_api_material.xml"
+        "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/drawable/messenger_button_white_bg_round.xml",
+        "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/drawable/messenger_button_white_bg_round.xml"
     },
     {
         "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_light.xml",
         "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/drawable/abc_list_selector_holo_light.xml"
+    },
+    {
+        "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/drawable/abc_ic_go_search_api_material.xml",
+        "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/drawable/abc_ic_go_search_api_material.xml"
     },
     {
         "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/drawable/abc_ic_search_api_material.xml",

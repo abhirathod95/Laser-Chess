@@ -1,4 +1,4 @@
-#Mon Nov 07 18:07:02 CST 2016
+#Mon Nov 07 22:33:03 CST 2016
 base.0=/home/daniel/Laser-Chess/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_438aa93e9693df70107377083a17cd65089f1261
 renamed.1=classes2.dex
 renamed.0=classes.dex

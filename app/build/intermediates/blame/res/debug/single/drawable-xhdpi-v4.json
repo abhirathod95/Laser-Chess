@@ -220,12 +220,12 @@
         "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/drawable-xhdpi-v4/com_facebook_tooltip_black_xout.png"
     },
     {
-        "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_000.png",
-        "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
-    },
-    {
         "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_list_longpressed_holo.9.png",
         "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/drawable-xhdpi-v4/abc_list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_000.png",
+        "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
     },
     {
         "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_scrubber_control_off_mtrl_alpha.png",
