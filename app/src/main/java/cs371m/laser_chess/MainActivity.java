@@ -141,13 +141,38 @@ public class MainActivity extends FragmentActivity {
                         Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                         startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
                     } else {
-                        // Start matchmaking
+                        // Start matchmaking. Non-hosts must discover hosts.
+                        mBluetoothAdapter.startDiscovery();
                     }
                 }
-
             }
         });
 
+
+        // Listener for Host A Match button.
+        Button hostMatch = (Button) findViewById(R.id.hostmatch_but);
+        hostMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!loggedIn){
+                    Toast.makeText(getApplicationContext(), "Log in to host a match!",Toast.LENGTH_SHORT).show();
+                } else if (mBluetoothAdapter == null) {
+                    // Device does not support Bluetooth
+                    Toast.makeText(getApplicationContext(), "No Bluetooth On Device. No Play.",Toast.LENGTH_SHORT).show();
+                } else {
+                    if (!mBluetoothAdapter.isEnabled()) {
+                        Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                        startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+                    } else {
+                        // Start matchmaking. Host is the one that becomes discoverable.
+                        Intent discoverableIntent = new
+                                Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+                        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 120);
+                        startActivity(discoverableIntent);
+                    }
+                }
+            }
+        });
 
 
     }

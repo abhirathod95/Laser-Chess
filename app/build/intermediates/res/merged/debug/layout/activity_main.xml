@@ -29,9 +29,9 @@
         android:id="@+id/highscore_but"
         android:minHeight="55dp"
         android:minWidth="200dp"
-        android:layout_above="@+id/login_but"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp" />
+        android:layout_marginBottom="20dp" />
 
     <TextView
         android:text="TextView"
@@ -43,6 +43,17 @@
         android:id="@+id/titleText"
         android:textSize="45sp"/>
 
+    <Button
+        android:text="Host A Match"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hostmatch_but"
+        android:minHeight="55dp"
+        android:minWidth="200dp"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@+id/findmatch_but"
+        android:layout_alignStart="@+id/findmatch_but" />
+
     <com.facebook.login.widget.LoginButton
         android:text="Log In"
         android:layout_width="wrap_content"
@@ -51,8 +62,7 @@
         android:minHeight="55dp"
         android:minWidth="200dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp" />
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>
