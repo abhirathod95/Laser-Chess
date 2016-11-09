@@ -5,29 +5,29 @@
     density="xxxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="2420189278582"
+    timestamp="24811720643969"
     token="-2207567268468708750"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="58" />
+        duration="102" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="13" />
+        duration="85" />
     <task
         name="verifier"
-        duration="1" />
+        duration="5" />
 
     <artifact
         location="/home/daniel/Laser-Chess/app/build/outputs/apk/app-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="2420189278582"
+        timestamp="24811720643969"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/daniel/Laser-Chess/app/build/outputs/apk/app-debug.apk"

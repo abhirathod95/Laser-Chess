@@ -3,10 +3,12 @@
 package cs371m.laser_chess;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
@@ -14,13 +16,11 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.graphics.Typeface;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,29 +34,61 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import java.lang.reflect.Method;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.Set;
 
 
 public class MainActivity extends FragmentActivity {
 
-    Boolean loggedIn; // yeah
+    Boolean loggedIn; // Facebook
 
     private CallbackManager callbackManager; // for Facebook login
     BluetoothAdapter mBluetoothAdapter;
     private final static int FACEBOOK_LOGIN_CODE = 1;
     private final static int REQUEST_ENABLE_BT = 2;
 
-    ArrayList<BluetoothDevice> mDeviceList;
+    private final static int LOCATION_PERMISSION= 11;
 
+    private ProgressDialog findingDialogue;
+    private ProgressDialog hostingDialogue;
+
+    ArrayList<BluetoothDevice> mDeviceList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+
+        // Dialogue code taken from Bluetooth tutorial at // http://www.londatiga.net
+        findingDialogue = new ProgressDialog(this);
+        findingDialogue.setCancelable(false);
+        findingDialogue.setMessage("Looking for opponents...");
+        findingDialogue.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                Toast.makeText(getApplicationContext(), "Cancelled.",Toast.LENGTH_SHORT).show();
+
+                mBluetoothAdapter.cancelDiscovery();
+            }
+        });
+
+        // Dialogue code taken from Bluetooth tutorial at // http://www.londatiga.net
+        hostingDialogue = new ProgressDialog(this);
+        hostingDialogue.setCancelable(false);
+        hostingDialogue.setMessage("Waiting for opponents...");
+        hostingDialogue.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                Toast.makeText(getApplicationContext(), "Cancelled.",Toast.LENGTH_SHORT).show();
+
+                mBluetoothAdapter.disable();
+            }
+        });
 
 
         // Add code to print out the key hash
@@ -152,7 +184,6 @@ public class MainActivity extends FragmentActivity {
     // Create a BroadcastReceiver for ACTION_FOUND
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
-
             String action = intent.getAction();
             // When discovery finds a device
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
@@ -161,6 +192,9 @@ public class MainActivity extends FragmentActivity {
                 // Add the name and address to an array.
                 mDeviceList.add(device);
                 Toast.makeText(getApplicationContext(), "Found device " + device.getName(),Toast.LENGTH_SHORT).show();
+            } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
+                Toast.makeText(getApplicationContext(), "Opponent search finished.",Toast.LENGTH_SHORT).show();
+                findingDialogue.dismiss();
             }
         }
     };
@@ -181,11 +215,18 @@ public class MainActivity extends FragmentActivity {
                 // Gets already paired devices.
                 mDeviceList = new ArrayList<BluetoothDevice>(mBluetoothAdapter.getBondedDevices());
 
-                // Make device discoverable.
-                Intent discoverableIntent = new
-                        Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-                discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 120);
-                startActivity(discoverableIntent);
+                // LOL this is absolutely retarded but my goodness it is the only way, I promise.
+                Method method;
+                try {
+                    method = mBluetoothAdapter.getClass().getMethod("setScanMode", int.class, int.class);
+                    method.invoke(mBluetoothAdapter,BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE, 120);
+                    hostingDialogue.show();
+                    Log.e("invoke","method invoke successfully");
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+
             }
         }
     }
@@ -205,21 +246,46 @@ public class MainActivity extends FragmentActivity {
             } else {
                 // Gets already paired devices.
                 mDeviceList = new ArrayList<BluetoothDevice>(mBluetoothAdapter.getBondedDevices());
-
-                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1001); //Any number
-                mBluetoothAdapter.startDiscovery();
-
-                IntentFilter filter = new IntentFilter();
-
-                filter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
-                filter.addAction(BluetoothDevice.ACTION_FOUND);
-                filter.addAction(BluetoothAdapter.ACTION_DISCOVERY_STARTED);
-                filter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
-                // Don't forget to unregister during onDestroy
-                registerReceiver(mReceiver, filter);
+                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION);
             }
         }
     }
 
+
+    // https://developer.android.com/training/permissions/requesting.html?hl=es#perm-check
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case LOCATION_PERMISSION: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // task you need to do.
+                    mBluetoothAdapter.startDiscovery();
+
+                    IntentFilter filter = new IntentFilter();
+                    filter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
+                    filter.addAction(BluetoothDevice.ACTION_FOUND);
+                    filter.addAction(BluetoothAdapter.ACTION_DISCOVERY_STARTED);
+                    filter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
+                    // Don't forget to unregister during onDestroy
+                    registerReceiver(mReceiver, filter);
+
+                    // Dialogue closes if user clicks cancel, or the scan finishes by itself with
+                    // DISCOVERY_FINISHED in broadcast receiver
+                    findingDialogue.show();
+                } else {
+                    // permission denied, boo!
+                    Toast.makeText(getApplicationContext(), "Enable location permissions to find opponents.",Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
 
 }
