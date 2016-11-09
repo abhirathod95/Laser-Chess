@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="x86"
+    abi="arm64-v8a,armeabi-v7a,armeabi"
     api-level="23"
-    density="560dpi"
+    density="xxxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="33021163502712"
+    timestamp="2420189278582"
     token="-2207567268468708750"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="74" />
+        duration="58" />
     <task
         name="instant-run-dex"
         duration="0" />
@@ -20,25 +20,18 @@
         duration="13" />
     <task
         name="verifier"
-        duration="0" />
+        duration="1" />
 
     <artifact
-        location="/home/daniel/Laser-Chess/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
-        type="DEX" />
+        location="/home/daniel/Laser-Chess/app/build/outputs/apk/app-debug.apk"
+        type="MAIN" />
 
     <build
-        timestamp="30983766210502"
+        timestamp="2420189278582"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/daniel/Laser-Chess/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
-    </build>
-    <build
-        timestamp="33021163502712"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/home/daniel/Laser-Chess/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
-            type="DEX" />
     </build>
 
 </instant-run>

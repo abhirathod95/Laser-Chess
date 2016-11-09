@@ -44,12 +44,12 @@
         "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/layout/select_dialog_item_material.xml"
     },
     {
-        "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
-        "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/layout/support_simple_spinner_dropdown_item.xml"
-    },
-    {
         "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
         "source": "/home/daniel/Laser-Chess/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
+        "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/layout/support_simple_spinner_dropdown_item.xml"
     },
     {
         "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/layout/notification_template_big_media.xml",

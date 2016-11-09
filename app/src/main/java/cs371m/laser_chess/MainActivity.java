@@ -1,7 +1,14 @@
+// Much Bluetooth code taken from https://developer.android.com/guide/topics/connectivity/bluetooth.html.
+
 package cs371m.laser_chess;
 
+import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -12,6 +19,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +36,8 @@ import com.facebook.login.widget.LoginButton;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Set;
 
 
 public class MainActivity extends FragmentActivity {
@@ -39,12 +49,13 @@ public class MainActivity extends FragmentActivity {
     private final static int FACEBOOK_LOGIN_CODE = 1;
     private final static int REQUEST_ENABLE_BT = 2;
 
+    ArrayList<BluetoothDevice> mDeviceList;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 
 
@@ -63,8 +74,6 @@ public class MainActivity extends FragmentActivity {
         } catch (NoSuchAlgorithmException e) {
 
         }
-
-
 
 
 
@@ -94,7 +103,6 @@ public class MainActivity extends FragmentActivity {
             protected void onCurrentAccessTokenChanged(
                     AccessToken oldAccessToken,
                     AccessToken currentAccessToken) {
-                //System.out.println("boo");
                 if (currentAccessToken == null){
                     //User logged out
                     loggedIn = false;
@@ -125,56 +133,6 @@ public class MainActivity extends FragmentActivity {
         Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/laser.ttf");
         title.setTypeface(custom_font);
         title.setText("Laser Chess");
-
-        // Listener for Find A Match button.
-        Button findMatch = (Button) findViewById(R.id.findmatch_but);
-        findMatch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!loggedIn){
-                    Toast.makeText(getApplicationContext(), "Log in to find a match!",Toast.LENGTH_SHORT).show();
-                } else if (mBluetoothAdapter == null) {
-                    // Device does not support Bluetooth
-                    Toast.makeText(getApplicationContext(), "No Bluetooth On Device. No Play.",Toast.LENGTH_SHORT).show();
-                } else {
-                    if (!mBluetoothAdapter.isEnabled()) {
-                        Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                        startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-                    } else {
-                        // Start matchmaking. Non-hosts must discover hosts.
-                        mBluetoothAdapter.startDiscovery();
-                    }
-                }
-            }
-        });
-
-
-        // Listener for Host A Match button.
-        Button hostMatch = (Button) findViewById(R.id.hostmatch_but);
-        hostMatch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!loggedIn){
-                    Toast.makeText(getApplicationContext(), "Log in to host a match!",Toast.LENGTH_SHORT).show();
-                } else if (mBluetoothAdapter == null) {
-                    // Device does not support Bluetooth
-                    Toast.makeText(getApplicationContext(), "No Bluetooth On Device. No Play.",Toast.LENGTH_SHORT).show();
-                } else {
-                    if (!mBluetoothAdapter.isEnabled()) {
-                        Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                        startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-                    } else {
-                        // Start matchmaking. Host is the one that becomes discoverable.
-                        Intent discoverableIntent = new
-                                Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-                        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 120);
-                        startActivity(discoverableIntent);
-                    }
-                }
-            }
-        });
-
-
     }
 
     // Facebook login activity result.
@@ -182,11 +140,86 @@ public class MainActivity extends FragmentActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_ENABLE_BT){
             if (resultCode != RESULT_OK){
-                Toast.makeText(getApplicationContext(), "Bluetooth was not activated.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Bluetooth must be active to play.",Toast.LENGTH_SHORT).show();
             }
         } else if (requestCode == FACEBOOK_LOGIN_CODE){
             callbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+
+    // https://developer.android.com/guide/topics/connectivity/bluetooth.html
+    // Create a BroadcastReceiver for ACTION_FOUND
+    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+
+            String action = intent.getAction();
+            // When discovery finds a device
+            if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+                // Get the BluetoothDevice object from the Intent
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                // Add the name and address to an array.
+                mDeviceList.add(device);
+                Toast.makeText(getApplicationContext(), "Found device " + device.getName(),Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
+
+    // OnClick for Host a Match. Makes the device discoverable.
+    public void hostClick(View v){
+        if (!loggedIn){
+            Toast.makeText(getApplicationContext(), "Log in to host a match!",Toast.LENGTH_SHORT).show();
+        } else if (mBluetoothAdapter == null) {
+            // Device does not support Bluetooth
+            Toast.makeText(getApplicationContext(), "No Bluetooth On Device. No Play.",Toast.LENGTH_SHORT).show();
+            // Device supports Bluetooth.
+        } else {
+            if (!mBluetoothAdapter.isEnabled()) {
+                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+            } else {
+                // Gets already paired devices.
+                mDeviceList = new ArrayList<BluetoothDevice>(mBluetoothAdapter.getBondedDevices());
+
+                // Make device discoverable.
+                Intent discoverableIntent = new
+                        Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+                discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 120);
+                startActivity(discoverableIntent);
+            }
+        }
+    }
+
+    // OnClick for Find a Match. Uses startDiscovery() to look for devices.
+    public void findClick(View v){
+        if (!loggedIn){
+            Toast.makeText(getApplicationContext(), "Log in to find a match!",Toast.LENGTH_SHORT).show();
+        } else if (mBluetoothAdapter == null) {
+            // Device does not support Bluetooth
+            Toast.makeText(getApplicationContext(), "No Bluetooth On Device. No Play.",Toast.LENGTH_SHORT).show();
+        } else {
+            // Device supports Bluetooth.
+            if (!mBluetoothAdapter.isEnabled()) {
+                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+            } else {
+                // Gets already paired devices.
+                mDeviceList = new ArrayList<BluetoothDevice>(mBluetoothAdapter.getBondedDevices());
+
+                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1001); //Any number
+                mBluetoothAdapter.startDiscovery();
+
+                IntentFilter filter = new IntentFilter();
+
+                filter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
+                filter.addAction(BluetoothDevice.ACTION_FOUND);
+                filter.addAction(BluetoothAdapter.ACTION_DISCOVERY_STARTED);
+                filter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
+                // Don't forget to unregister during onDestroy
+                registerReceiver(mReceiver, filter);
+            }
+        }
+    }
+
 
 }
