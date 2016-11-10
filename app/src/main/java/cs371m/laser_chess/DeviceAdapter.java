@@ -3,6 +3,7 @@ package cs371m.laser_chess;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,9 +26,11 @@ public class DeviceAdapter extends BaseAdapter{
 
     private LayoutInflater mInflater;
     private ArrayList<BluetoothDevice> mData;
+    private Context con;
 
     public DeviceAdapter(Context context, ArrayList<BluetoothDevice> devices) {
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        con = context;
         mData = devices;
     }
 
@@ -50,7 +53,7 @@ public class DeviceAdapter extends BaseAdapter{
     }
 
 
-    protected View bindView(View theView, int position, ViewGroup parent) {
+    protected View bindView(View theView, final int position, ViewGroup parent) {
         TextView name = (TextView) theView.findViewById(R.id.op_name);
         TextView mac = (TextView) theView.findViewById(R.id.mac_Addr);
         Button play = (Button) theView.findViewById(R.id.play_but);
@@ -63,6 +66,17 @@ public class DeviceAdapter extends BaseAdapter{
         }
         name.setText(deviceName);
         mac.setText(mData.get(position).getAddress());
+
+
+        // Calls the startTheGame function in OpponentList Activity
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(con instanceof OpponentList){
+                    ((OpponentList)con).startTheGame(mData.get(position).getAddress());
+                }
+            }
+        });
 
         return theView;
     }

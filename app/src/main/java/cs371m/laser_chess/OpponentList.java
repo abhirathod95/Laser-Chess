@@ -2,8 +2,11 @@ package cs371m.laser_chess;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
+import android.content.Intent;
+import android.graphics.Path;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -29,5 +32,15 @@ public class OpponentList extends Activity {
 
         mAdapter = new DeviceAdapter(this, mDeviceList);
         mListView.setAdapter(mAdapter);
+    }
+
+    public void startTheGame(String mac){
+        Toast.makeText(getApplicationContext(), "Kill the ListView; Start the game Activity.",Toast.LENGTH_SHORT).show();
+
+
+        //Intent newGame = new Intent(OpponentList.this, GAME_BOARD_HERE.class);
+        //newGame.putExtra("mac", mac);
+        finish();
+        //startActivity(newGame);
     }
 }

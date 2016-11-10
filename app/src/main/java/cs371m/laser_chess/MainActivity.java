@@ -25,6 +25,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,11 +43,14 @@ import java.lang.reflect.Method;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MainActivity extends FragmentActivity {
 
     Boolean loggedIn; // Facebook
+    Boolean cancel;
 
     private CallbackManager callbackManager; // for Facebook login
     BluetoothAdapter mBluetoothAdapter;
@@ -65,6 +69,7 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        cancel = false;
 
         // Dialogue code taken from Bluetooth tutorial at // http://www.londatiga.net
         findingDialogue = new ProgressDialog(this);
@@ -74,12 +79,12 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-
+                cancel();
                 mBluetoothAdapter.cancelDiscovery();
             }
         });
 
-        // Dialogue code taken from Bluetooth tutorial at // http://www.londatiga.net
+        // Dialogue code adapted from Bluetooth tutorial at // http://www.londatiga.net
         hostingDialogue = new ProgressDialog(this);
         hostingDialogue.setCancelable(false);
         hostingDialogue.setMessage("Waiting for opponents...");
@@ -87,10 +92,11 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-
                 // Stop being discoverable without having to prompt the user.
                 mBluetoothAdapter.getDefaultAdapter().disable();
                 mBluetoothAdapter.getDefaultAdapter().enable();
+                cancel();
+
 
             }
         });
@@ -201,6 +207,8 @@ public class MainActivity extends FragmentActivity {
     // Create a BroadcastReceiver for ACTION_FOUND
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
+
+
             String action = intent.getAction();
             // When discovery finds a device
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
@@ -208,15 +216,16 @@ public class MainActivity extends FragmentActivity {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 // Add the name and address to an array.
                 mDeviceList.add(device);
-                Toast.makeText(getApplicationContext(), "Found device " + device.getName(),Toast.LENGTH_SHORT).show();
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
-                Toast.makeText(getApplicationContext(), "Opponent search finished.",Toast.LENGTH_SHORT).show();
-                findingDialogue.dismiss();
-
-                // Start the OpponentList Activity
-                Intent newIntent = new Intent(MainActivity.this, OpponentList.class);
-                newIntent.putParcelableArrayListExtra("devicelist", mDeviceList);
-                startActivity(newIntent);
+                if (!cancel){
+                    Toast.makeText(getApplicationContext(), "Opponent search finished.", Toast.LENGTH_SHORT).show();
+                    findingDialogue.dismiss();
+                    // Start the OpponentList Activity
+                    Intent newIntent = new Intent(MainActivity.this, OpponentList.class);
+                    newIntent.putParcelableArrayListExtra("devicelist", mDeviceList);
+                    startActivity(newIntent);
+                }
+                cancel = false;
             }
         }
     };
@@ -311,7 +320,9 @@ public class MainActivity extends FragmentActivity {
     }
 
 
-    // Handles the unregistering of the broadcast receiver.
+    /** Handles the unregistering of the broadcast receiver.
+     *
+     */
     public void onDestroy() {
         try{
             if(mReceiver!=null)
@@ -324,4 +335,34 @@ public class MainActivity extends FragmentActivity {
 
     }
 
+    /** Delay after cancelling a Host. This gives the Bluetooth Adapter time to turn back on after
+     *  cancelling discoverability.
+     */
+    public void cancel(){
+        cancel=true;
+
+        final Button find = (Button) findViewById(R.id.findmatch_but);
+        final Button host = (Button) findViewById(R.id.hostmatch_but);
+
+        find.setEnabled(false);
+        host.setEnabled(false);
+
+
+        Timer buttonTimer = new Timer();
+        buttonTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        find.setEnabled(true);
+                        host.setEnabled(true);
+                    }
+                });
+            }
+        }, 1500);
+
+        mBluetoothAdapter.getDefaultAdapter().enable();
+
+    }
 }
