@@ -38,9 +38,23 @@ public class OpponentList extends Activity {
         Toast.makeText(getApplicationContext(), "Kill the ListView; Start the game Activity.",Toast.LENGTH_SHORT).show();
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
         Intent newGame = new Intent(OpponentList.this, GameLogic.class);
         newGame.putExtra("mac", mac);
         finish();
         startActivity(newGame);
+=======
+        //Intent newGame = new Intent(OpponentList.this, GAME_BOARD_HERE.class);
+        //newGame.putExtra("mac", mac);
+        finish();
+        //startActivity(newGame);
+>>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
+=======
+        Intent newGame = new Intent(OpponentList.this, GameLogic.class);
+        newGame.putExtra("mac", mac);
+        finish();
+        startActivity(newGame);
+>>>>>>> 5ba37cae2db4522baef7c96d5bb2897513611824
     }
 }

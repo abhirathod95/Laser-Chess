@@ -54,10 +54,19 @@
 
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5ba37cae2db4522baef7c96d5bb2897513611824
         <activity android:name=".GameLogic"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
+<<<<<<< HEAD
+=======
+>>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
+=======
+>>>>>>> 5ba37cae2db4522baef7c96d5bb2897513611824
 
 
         <activity
@@ -65,9 +74,21 @@
             android:label="@string/app_name"
             android:screenOrientation="landscape">
 
+<<<<<<< HEAD
+<<<<<<< HEAD
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
+=======
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+        </intent-filter>
+>>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
+=======
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+>>>>>>> 5ba37cae2db4522baef7c96d5bb2897513611824
         </activity>
 
 
