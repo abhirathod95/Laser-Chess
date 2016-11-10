@@ -44,26 +44,16 @@
         "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\drawable\\messenger_button_white_bg_selector.xml"
     },
     {
-<<<<<<< HEAD
-        "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_send_background.xml",
-        "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\drawable\\com_facebook_button_send_background.xml"
-=======
         "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_light.xml",
         "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\drawable\\abc_list_selector_holo_light.xml"
->>>>>>> 5ba37cae2db4522baef7c96d5bb2897513611824
     },
     {
         "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_icon_background.xml",
         "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\drawable\\notification_icon_background.xml"
     },
     {
-<<<<<<< HEAD
-        "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_light.xml",
-        "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\drawable\\abc_list_selector_holo_light.xml"
-=======
         "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_send_background.xml",
         "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\drawable\\com_facebook_button_send_background.xml"
->>>>>>> 5ba37cae2db4522baef7c96d5bb2897513611824
     },
     {
         "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml",
@@ -74,22 +64,6 @@
         "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\src\\main\\res\\drawable\\pyramid.png"
     },
     {
-<<<<<<< HEAD
-        "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\diagonal_right_bot.png",
-        "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\src\\main\\res\\drawable\\diagonal_right_bot.png"
-    },
-    {
-        "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_light.xml",
-        "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\drawable\\abc_item_background_holo_light.xml"
-    },
-    {
-        "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_bg.xml",
-        "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\drawable\\notification_bg.xml"
-    },
-    {
-        "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_bg_low.xml",
-        "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\drawable\\notification_bg_low.xml"
-=======
         "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_light.xml",
         "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\drawable\\abc_item_background_holo_light.xml"
     },
@@ -104,7 +78,6 @@
     {
         "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_bg.xml",
         "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\drawable\\notification_bg.xml"
->>>>>>> 5ba37cae2db4522baef7c96d5bb2897513611824
     },
     {
         "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",

@@ -1,37 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 5ba37cae2db4522baef7c96d5bb2897513611824
 <instant-run
     abi="arm64-v8a,armeabi-v7a,armeabi"
     api-level="23"
     density="xxxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="227595813555146"
+    timestamp="229169581088892"
     token="-5729855115093354504"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="1454" />
+        duration="684" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="347" />
+        duration="136" />
     <task
         name="verifier"
-        duration="60" />
+        duration="33" />
 
     <artifact
         location="C:\Users\Abhi\Desktop\Classes\Laser-Chess\app\build\outputs\apk\app-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="227595813555146"
+        timestamp="229169581088892"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\Abhi\Desktop\Classes\Laser-Chess\app\build\outputs\apk\app-debug.apk"
@@ -39,44 +35,3 @@
     </build>
 
 </instant-run>
-<<<<<<< HEAD
-=======
-<instant-run
-    abi="arm64-v8a,armeabi-v7a,armeabi"
-    api-level="23"
-    density="xxxhdpi"
-    format="8"
-    plugin-version="2.2.2"
-    timestamp="44967807431294"
-    token="-2207567268468708750"
-    verifier="FULL_BUILD_REQUESTED" >
-
-    <task
-        name="javac"
-        duration="130" />
-    <task
-        name="instant-run-dex"
-        duration="0" />
-    <task
-        name="instant-run-transform"
-        duration="51" />
-    <task
-        name="verifier"
-        duration="3" />
-
-    <artifact
-        location="/home/daniel/Laser-Chess/app/build/outputs/apk/app-debug.apk"
-        type="MAIN" />
-
-    <build
-        timestamp="44967807431294"
-        verifier="FULL_BUILD_REQUESTED" >
-        <artifact
-            location="/home/daniel/Laser-Chess/app/build/outputs/apk/app-debug.apk"
-            type="MAIN" />
-    </build>
-
-</instant-run>
->>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
-=======
->>>>>>> 5ba37cae2db4522baef7c96d5bb2897513611824
