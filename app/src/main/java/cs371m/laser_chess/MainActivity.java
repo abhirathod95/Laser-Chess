@@ -35,9 +35,15 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.Profile;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.lang.reflect.Method;
 import java.security.MessageDigest;
@@ -51,6 +57,7 @@ public class MainActivity extends FragmentActivity {
 
     Boolean loggedIn; // Facebook
     Boolean cancel;
+    String username;
 
     private CallbackManager callbackManager; // for Facebook login
     BluetoothAdapter mBluetoothAdapter;
@@ -167,9 +174,10 @@ public class MainActivity extends FragmentActivity {
             }
         };
 
-        // Facebook button callback.
+        // Facebook button callback.//////////////////////////////////////////////////////////////////////////////
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
+            // http://stackoverflow.com/questions/33139932/how-to-get-email-id-from-android-facebook-sdk-4-6-0
             public void onSuccess(LoginResult loginResult) {
             }
 
@@ -243,10 +251,13 @@ public class MainActivity extends FragmentActivity {
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             } else {
+                Profile profile = Profile.getCurrentProfile();
+                username = profile.getFirstName() + " " + profile.getLastName();
+                mBluetoothAdapter.setName(username);
                 // Gets already paired devices.
                 //mDeviceList = new ArrayList<BluetoothDevice>(mBluetoothAdapter.getBondedDevices());
 
-                // LOL this is absolutely retarded but my goodness it is the only way, I promise.
+                // LOL this is absolutely retarded but it is the only way.
                 Method method;
                 try {
                     method = mBluetoothAdapter.getClass().getMethod("setScanMode", int.class, int.class);
