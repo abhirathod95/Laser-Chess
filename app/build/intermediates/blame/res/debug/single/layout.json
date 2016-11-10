@@ -16,8 +16,17 @@
         "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\select_dialog_singlechoice_material.xml"
     },
     {
+<<<<<<< HEAD
         "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
         "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_action_bar_up_container.xml"
+=======
+        "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/layout/list_opponents.xml",
+        "source": "/home/daniel/Laser-Chess/app/src/main/res/layout/list_opponents.xml"
+    },
+    {
+        "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
+        "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/layout/abc_list_menu_item_layout.xml"
+>>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
     },
     {
         "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_cancel_action.xml",
@@ -128,8 +137,17 @@
         "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\notification_template_big_media.xml"
     },
     {
+<<<<<<< HEAD
         "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_white_round.xml",
         "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\layout\\messenger_button_send_white_round.xml"
+=======
+        "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/layout/op_list_item.xml",
+        "source": "/home/daniel/Laser-Chess/app/src/main/res/layout/op_list_item.xml"
+    },
+    {
+        "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/layout/com_facebook_activity_layout.xml",
+        "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/layout/com_facebook_activity_layout.xml"
+>>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
     },
     {
         "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\layout\\list_opponents.xml",
@@ -152,6 +170,7 @@
         "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_screen_content_include.xml"
     },
     {
+<<<<<<< HEAD
         "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_blue_round.xml",
         "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\layout\\messenger_button_send_blue_round.xml"
     },
@@ -162,6 +181,18 @@
     {
         "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
         "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\notification_template_media.xml"
+=======
+        "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/layout/messenger_button_send_white_small.xml",
+        "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/layout/messenger_button_send_white_small.xml"
+    },
+    {
+        "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
+        "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/layout/abc_screen_simple.xml"
+    },
+    {
+        "merged": "/home/daniel/Laser-Chess/app/build/intermediates/res/merged/debug/layout/messenger_button_send_blue_small.xml",
+        "source": "/home/daniel/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/layout/messenger_button_send_blue_small.xml"
+>>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
     },
     {
         "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",

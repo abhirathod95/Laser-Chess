@@ -42,9 +42,12 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+<<<<<<< HEAD
 import org.json.JSONException;
 import org.json.JSONObject;
 
+=======
+>>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
 import java.lang.reflect.Method;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -57,7 +60,10 @@ public class MainActivity extends FragmentActivity {
 
     Boolean loggedIn; // Facebook
     Boolean cancel;
+<<<<<<< HEAD
     String username;
+=======
+>>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
 
     private CallbackManager callbackManager; // for Facebook login
     BluetoothAdapter mBluetoothAdapter;
@@ -251,9 +257,12 @@ public class MainActivity extends FragmentActivity {
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             } else {
+<<<<<<< HEAD
                 Profile profile = Profile.getCurrentProfile();
                 username = profile.getFirstName() + " " + profile.getLastName();
                 mBluetoothAdapter.setName(username);
+=======
+>>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
                 // Gets already paired devices.
                 //mDeviceList = new ArrayList<BluetoothDevice>(mBluetoothAdapter.getBondedDevices());
 
