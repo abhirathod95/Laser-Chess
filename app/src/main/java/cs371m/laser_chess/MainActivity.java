@@ -1,4 +1,8 @@
-// Much Bluetooth code taken from https://developer.android.com/guide/topics/connectivity/bluetooth.html.
+/**
+ * Created by daniel on 11/6/16. Much Bluetooth code here adapted from:
+ * https://developer.android.com/guide/topics/connectivity/bluetooth.html.
+ */
+
 
 package cs371m.laser_chess;
 
@@ -70,7 +74,6 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                Toast.makeText(getApplicationContext(), "Cancelled.",Toast.LENGTH_SHORT).show();
 
                 mBluetoothAdapter.cancelDiscovery();
             }
@@ -84,9 +87,11 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                Toast.makeText(getApplicationContext(), "Cancelled.",Toast.LENGTH_SHORT).show();
 
-                mBluetoothAdapter.disable();
+                // Stop being discoverable without having to prompt the user.
+                mBluetoothAdapter.getDefaultAdapter().disable();
+                mBluetoothAdapter.getDefaultAdapter().enable();
+
             }
         });
 
@@ -120,7 +125,19 @@ public class MainActivity extends FragmentActivity {
         AppEventsLogger.activateApp(this);
         LoginButton loginButton = (LoginButton) findViewById(R.id.login_but);
 
+        // Requests Bluetooth on app launch.
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (mBluetoothAdapter == null) {
+            // Device does not support Bluetooth
+            Toast.makeText(getApplicationContext(), "Your device does not support Bluetooth.\nThis game will not work.",Toast.LENGTH_SHORT).show();
+        } else {
+            // Device supports Bluetooth.
+            if (!mBluetoothAdapter.isEnabled()) {
+                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+            }
+        }
+
         // Initial login check.
         if (AccessToken.getCurrentAccessToken() == null){
             //User logged out
@@ -195,6 +212,11 @@ public class MainActivity extends FragmentActivity {
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
                 Toast.makeText(getApplicationContext(), "Opponent search finished.",Toast.LENGTH_SHORT).show();
                 findingDialogue.dismiss();
+
+                // Start the OpponentList Activity
+                Intent newIntent = new Intent(MainActivity.this, OpponentList.class);
+                newIntent.putParcelableArrayListExtra("devicelist", mDeviceList);
+                startActivity(newIntent);
             }
         }
     };
@@ -213,7 +235,7 @@ public class MainActivity extends FragmentActivity {
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             } else {
                 // Gets already paired devices.
-                mDeviceList = new ArrayList<BluetoothDevice>(mBluetoothAdapter.getBondedDevices());
+                //mDeviceList = new ArrayList<BluetoothDevice>(mBluetoothAdapter.getBondedDevices());
 
                 // LOL this is absolutely retarded but my goodness it is the only way, I promise.
                 Method method;
@@ -245,7 +267,9 @@ public class MainActivity extends FragmentActivity {
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             } else {
                 // Gets already paired devices.
-                mDeviceList = new ArrayList<BluetoothDevice>(mBluetoothAdapter.getBondedDevices());
+                //mDeviceList = new ArrayList<BluetoothDevice>(mBluetoothAdapter.getBondedDevices());
+
+                mDeviceList = new ArrayList<BluetoothDevice>();
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION);
             }
         }
@@ -283,9 +307,21 @@ public class MainActivity extends FragmentActivity {
                 return;
             }
 
-            // other 'case' lines to check for other
-            // permissions this app might request
         }
+    }
+
+
+    // Handles the unregistering of the broadcast receiver.
+    public void onDestroy() {
+        try{
+            if(mReceiver!=null)
+                unregisterReceiver(mReceiver);
+        }catch(Exception e)
+        {
+
+        }
+        super.onDestroy();
+
     }
 
 }
