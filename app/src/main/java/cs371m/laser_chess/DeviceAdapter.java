@@ -25,7 +25,7 @@ import static java.sql.Types.NULL;
 public class DeviceAdapter extends BaseAdapter{
 
     private LayoutInflater mInflater;
-    private ArrayList<BluetoothDevice> mData;
+    private ArrayList<BluetoothDevice> mData; // all Bluetooth results
     private Context con;
 
     public DeviceAdapter(Context context, ArrayList<BluetoothDevice> devices) {

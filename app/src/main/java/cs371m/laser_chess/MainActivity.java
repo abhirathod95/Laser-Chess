@@ -10,47 +10,39 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothServerSocket;
+import android.bluetooth.BluetoothSocket;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.graphics.Typeface;
+import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import java.io.IOException;
 import java.lang.reflect.Method;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.UUID;
 
 
 public class MainActivity extends FragmentActivity {
@@ -58,9 +50,14 @@ public class MainActivity extends FragmentActivity {
     Boolean loggedIn; // Facebook
     Boolean cancel;
     String username;
+    UUID uid = UUID.fromString("80d2bf7f-a00e-4951-9a33-6434ca4e27d8"); // unique to this app
+
+    AcceptThread hostThread;
 
     private CallbackManager callbackManager; // for Facebook login
     BluetoothAdapter mBluetoothAdapter;
+    BluetoothSocket mainSocket;
+
     private final static int FACEBOOK_LOGIN_CODE = 1;
     private final static int REQUEST_ENABLE_BT = 2;
 
@@ -107,28 +104,6 @@ public class MainActivity extends FragmentActivity {
 
             }
         });
-
-
-        // Add code to print out the key hash
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo(
-                    "cs371m.laser_chess",
-                    PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-
-        } catch (NoSuchAlgorithmException e) {
-
-        }
-
-
-
-
-
 
         FacebookSdk.sdkInitialize(getApplicationContext(), FACEBOOK_LOGIN_CODE);
         callbackManager = CallbackManager.Factory.create();
@@ -238,7 +213,7 @@ public class MainActivity extends FragmentActivity {
         }
     };
 
-    // OnClick for Host a Match. Makes the device discoverable.
+    // OnClick for Host a Match. Makes the device discoverable. Opens a BluetoothServerSocket.
     public void hostClick(View v){
         if (!loggedIn){
             Toast.makeText(getApplicationContext(), "Log in to host a match!",Toast.LENGTH_SHORT).show();
@@ -252,18 +227,39 @@ public class MainActivity extends FragmentActivity {
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             } else {
                 Profile profile = Profile.getCurrentProfile();
-                username = profile.getFirstName() + " " + profile.getLastName();
+                username = "Laser-Chess:" +profile.getFirstName() + " " + profile.getLastName();
                 mBluetoothAdapter.setName(username);
                 // Gets already paired devices.
                 //mDeviceList = new ArrayList<BluetoothDevice>(mBluetoothAdapter.getBondedDevices());
 
-                // LOL this is absolutely retarded but my goodness it is the only way, I promise.
+                // LOL this is absolutely retarded but it is the only way, I promise.
                 Method method;
                 try {
+                    System.out.println("one");
                     method = mBluetoothAdapter.getClass().getMethod("setScanMode", int.class, int.class);
                     method.invoke(mBluetoothAdapter,BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE, 120);
                     hostingDialogue.show();
-                    Log.e("invoke","method invoke successfully");
+                    System.out.println("two");
+                    hostThread = new AcceptThread();
+
+                    final Handler handler = new Handler();
+//                    handler.postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            // Do something after 3s = 3000ms
+                            hostThread.startAccept();
+//                        }
+//                    }, 3000);
+
+
+                    //Intent newGame = new Intent(this, GameLogic.class);
+                    //Bundle b = new Bundle();
+                    // Making a serializable object to pass the socket to the game activity.
+                    //SocketManager sManager = new SocketManager();
+                    //sManager.setSocket(mainSocket);
+                    //b.putSerializable("socket", sManager);
+                    //startActivity(newGame);
+
                 }
                 catch (Exception e){
                     e.printStackTrace();
@@ -274,6 +270,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     // OnClick for Find a Match. Uses startDiscovery() to look for devices.
+    // Opens a BluetoothSocket to connect to hosts.
     public void findClick(View v){
         if (!loggedIn){
             Toast.makeText(getApplicationContext(), "Log in to find a match!",Toast.LENGTH_SHORT).show();
@@ -352,6 +349,8 @@ public class MainActivity extends FragmentActivity {
     public void cancel(){
         cancel=true;
 
+        hostThread.cancel();
+
         final Button find = (Button) findViewById(R.id.findmatch_but);
         final Button host = (Button) findViewById(R.id.hostmatch_but);
 
@@ -376,4 +375,65 @@ public class MainActivity extends FragmentActivity {
         mBluetoothAdapter.getDefaultAdapter().enable();
 
     }
+
+
+    /**
+     * Created by daniel on 11/27/16.
+     * This started out as a simple nested thread, but it went rogue on me.
+     * https://developer.android.com/guide/topics/connectivity/bluetooth.html#ConnectingDevices
+     */
+    public class AcceptThread{
+        private final BluetoothServerSocket mmServerSocket;
+
+        public AcceptThread() {
+            // Use a temporary object that is later assigned to mmServerSocket,
+            // because mmServerSocket is final
+            BluetoothServerSocket tmp = null;
+            try {
+                // MY_UUID is the app's UUID string, also used by the client code
+                tmp = mBluetoothAdapter.listenUsingRfcommWithServiceRecord("Laser-Chess", uid);
+            } catch (IOException e) { }
+            mmServerSocket = tmp;
+        }
+
+        // LOL.
+        public void startAccept() {
+            new Thread(
+                new Runnable() {
+                    public void run() {
+                        BluetoothSocket socket;
+                        // Keep listening until exception occurs or a socket is returned
+                        while (true) {
+                            try {
+                                System.out.println("blocking");
+                                socket = mmServerSocket.accept();
+                            } catch (IOException e) {
+                                // goes here when user cancels hosting
+                                break;
+                            }
+                            // If a connection was accepted
+                            if (socket != null) {
+                                // Do work to manage the connection (in a separate thread)
+                                try {
+                                    mainSocket = socket;
+                                    mmServerSocket.close();
+                                } catch (Exception e) {
+                                    // go fuck yourself
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            ).start();
+        }
+
+        /** Will cancel the listening socket, and cause the thread to finish */
+        public void cancel() {
+            try {
+                mmServerSocket.close();
+            } catch (IOException e) { }
+        }
+    }
+
 }

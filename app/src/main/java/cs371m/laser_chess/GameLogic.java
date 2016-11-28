@@ -33,6 +33,8 @@ public class GameLogic extends FragmentActivity {
         setOnClickListeners();
         gameBoard.invalidate();
 
+
+
     }
 
     public void turnOver() {
