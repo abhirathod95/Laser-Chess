@@ -10,8 +10,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 /**
- * Created by daniel on 11/9/16. Draws from online tutorial at:
- * http://www.londatiga.net/it/programming/android/how-to-programmatically-scan-or-discover-android-bluetooth-device/
+ * Created by daniel on 11/9/16.
+ * ListView activity that launches after devices are found.
+ * Processes the devices to only show laser-chess players and then returns
+ * the selected device (the one the user hit play on) to the mainactivity result.
  */
 
 public class OpponentList extends Activity {

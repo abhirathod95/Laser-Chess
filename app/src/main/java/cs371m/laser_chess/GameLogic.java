@@ -32,7 +32,7 @@ public class GameLogic extends FragmentActivity {
     private boolean userTurn;
     ConnectedThread thread; // THIS IS OUR BIG BAD THREAD THAT DOES ALL MESSAGE EXCHANGE.
     // I INITIALIZE THIS BITCH FOR YOU SO YOU DONT HAVE TO, JUST CALL thread.write() WHEN A PLAYER
-    // MOVES A PIECE OR SOMESHIT YOU HANDLE THE REST
+    // MOVES A PIECE OR SOMESHIT YOU HANDLE THE REST. EXAMPLE IS IN METHODS BELOW.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,7 +130,7 @@ public class GameLogic extends FragmentActivity {
         }
     };
 
-    // example of sending a message using my ConnectedThread.
+    // example of sending a message using my ConnectedThread. this is hooked up to the button.
     // messages are sent in Byte[] form
     // just make it so that any board movement calls some method that calls write on thread
     public void testSocket(View view){
@@ -138,8 +138,11 @@ public class GameLogic extends FragmentActivity {
     }
 
 
-    // code adapted from android bluetooth documentation. changed to run in background thread so
+    // code adapted from android bluetooth documentation.
+    // changed the threading to run in background thread so
     // that the ui thread doesn't cock itself
+    //
+    // boilerplate code with severe threading alterations
     private class ConnectedThread{
         private final BluetoothSocket mmSocket;
         private final InputStream mmInStream;
