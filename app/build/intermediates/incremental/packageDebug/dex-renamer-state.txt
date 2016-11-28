@@ -1,0 +1,7 @@
+#Mon Nov 28 05:50:07 MST 2016
+base.0=/Users/daniel/Documents/Laser-Chess/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d50c667703ed6981668d5d1895676b5d06f0de80
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/Users/daniel/Documents/Laser-Chess/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b83fd6f82505f598cc39df9998b147059c313d40/classes.dex
+base.1=/Users/daniel/Documents/Laser-Chess/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b83fd6f82505f598cc39df9998b147059c313d40
+file.0=/Users/daniel/Documents/Laser-Chess/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d50c667703ed6981668d5d1895676b5d06f0de80/classes.dex
