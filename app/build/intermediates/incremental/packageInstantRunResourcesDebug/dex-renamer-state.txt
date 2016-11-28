@@ -1,1 +1,9 @@
+<<<<<<< HEAD
 #Thu Nov 10 17:47:04 CST 2016
+=======
+<<<<<<< HEAD
+#Thu Nov 10 17:20:51 CST 2016
+=======
+#Thu Nov 10 01:42:48 CST 2016
+>>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
+>>>>>>> master
