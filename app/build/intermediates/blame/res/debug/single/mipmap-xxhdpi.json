@@ -1,6 +1,11 @@
 [
     {
+<<<<<<< HEAD
         "merged": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
         "source": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+=======
+        "merged": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
+        "source": "/Users/daniel/Documents/Laser-Chess/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
     }
 ]

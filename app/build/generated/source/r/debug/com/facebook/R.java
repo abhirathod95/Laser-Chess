@@ -591,6 +591,7 @@ public final class R {
 		public static final int abc_textfield_search_default_mtrl_alpha = 0x7f020050;
 		public static final int abc_textfield_search_material = 0x7f020051;
 		public static final int abc_vector_test = 0x7f020052;
+<<<<<<< HEAD
 		public static final int com_facebook_auth_dialog_background = 0x7f020055;
 		public static final int com_facebook_auth_dialog_cancel_background = 0x7f020056;
 		public static final int com_facebook_auth_dialog_header_background = 0x7f020057;
@@ -645,6 +646,58 @@ public final class R {
 =======
 		public static final int action0 = 0x7f0b007f;
 >>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
+=======
+		public static final int com_facebook_auth_dialog_background = 0x7f020054;
+		public static final int com_facebook_auth_dialog_cancel_background = 0x7f020055;
+		public static final int com_facebook_auth_dialog_header_background = 0x7f020056;
+		public static final int com_facebook_button_background = 0x7f020057;
+		public static final int com_facebook_button_icon = 0x7f020058;
+		public static final int com_facebook_button_icon_blue = 0x7f020059;
+		public static final int com_facebook_button_icon_white = 0x7f02005a;
+		public static final int com_facebook_button_like_background = 0x7f02005b;
+		public static final int com_facebook_button_like_icon_selected = 0x7f02005c;
+		public static final int com_facebook_button_login_silver_background = 0x7f02005d;
+		public static final int com_facebook_button_send_background = 0x7f02005e;
+		public static final int com_facebook_button_send_icon_blue = 0x7f02005f;
+		public static final int com_facebook_button_send_icon_white = 0x7f020060;
+		public static final int com_facebook_close = 0x7f020061;
+		public static final int com_facebook_favicon_blue = 0x7f020062;
+		public static final int com_facebook_profile_picture_blank_portrait = 0x7f020063;
+		public static final int com_facebook_profile_picture_blank_square = 0x7f020064;
+		public static final int com_facebook_send_button_icon = 0x7f020065;
+		public static final int com_facebook_tooltip_black_background = 0x7f020066;
+		public static final int com_facebook_tooltip_black_bottomnub = 0x7f020067;
+		public static final int com_facebook_tooltip_black_topnub = 0x7f020068;
+		public static final int com_facebook_tooltip_black_xout = 0x7f020069;
+		public static final int com_facebook_tooltip_blue_background = 0x7f02006a;
+		public static final int com_facebook_tooltip_blue_bottomnub = 0x7f02006b;
+		public static final int com_facebook_tooltip_blue_topnub = 0x7f02006c;
+		public static final int com_facebook_tooltip_blue_xout = 0x7f02006d;
+		public static final int messenger_bubble_large_blue = 0x7f02006e;
+		public static final int messenger_bubble_large_white = 0x7f02006f;
+		public static final int messenger_bubble_small_blue = 0x7f020070;
+		public static final int messenger_bubble_small_white = 0x7f020071;
+		public static final int messenger_button_blue_bg_round = 0x7f020072;
+		public static final int messenger_button_blue_bg_selector = 0x7f020073;
+		public static final int messenger_button_send_round_shadow = 0x7f020074;
+		public static final int messenger_button_white_bg_round = 0x7f020075;
+		public static final int messenger_button_white_bg_selector = 0x7f020076;
+		public static final int notification_action_background = 0x7f020077;
+		public static final int notification_bg = 0x7f020078;
+		public static final int notification_bg_low = 0x7f020079;
+		public static final int notification_bg_low_normal = 0x7f02007a;
+		public static final int notification_bg_low_pressed = 0x7f02007b;
+		public static final int notification_bg_normal = 0x7f02007c;
+		public static final int notification_bg_normal_pressed = 0x7f02007d;
+		public static final int notification_icon_background = 0x7f02007e;
+		public static final int notification_template_icon_bg = 0x7f02008c;
+		public static final int notification_template_icon_low_bg = 0x7f02008d;
+		public static final int notification_tile_bg = 0x7f02007f;
+		public static final int notify_panel_notification_icon_bg = 0x7f020080;
+	}
+	public static final class id {
+		public static final int action0 = 0x7f0b0084;
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
 		public static final int action_bar = 0x7f0b0054;
 		public static final int action_bar_activity_content = 0x7f0b0000;
 		public static final int action_bar_container = 0x7f0b0053;
@@ -652,6 +705,7 @@ public final class R {
 		public static final int action_bar_spinner = 0x7f0b0001;
 		public static final int action_bar_subtitle = 0x7f0b0034;
 		public static final int action_bar_title = 0x7f0b0033;
+<<<<<<< HEAD
 <<<<<<< HEAD
 		public static final int action_container = 0x7f0b0080;
 		public static final int action_context_bar = 0x7f0b0055;
@@ -663,11 +717,18 @@ public final class R {
 		public static final int action_divider = 0x7f0b0083;
 		public static final int action_image = 0x7f0b007d;
 >>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
+=======
+		public static final int action_container = 0x7f0b0081;
+		public static final int action_context_bar = 0x7f0b0055;
+		public static final int action_divider = 0x7f0b0088;
+		public static final int action_image = 0x7f0b0082;
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
 		public static final int action_menu_divider = 0x7f0b0002;
 		public static final int action_menu_presenter = 0x7f0b0003;
 		public static final int action_mode_bar = 0x7f0b0051;
 		public static final int action_mode_bar_stub = 0x7f0b0050;
 		public static final int action_mode_close_button = 0x7f0b0035;
+<<<<<<< HEAD
 <<<<<<< HEAD
 		public static final int action_text = 0x7f0b0082;
 		public static final int actions = 0x7f0b008f;
@@ -675,6 +736,10 @@ public final class R {
 		public static final int action_text = 0x7f0b007e;
 		public static final int actions = 0x7f0b008b;
 >>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
+=======
+		public static final int action_text = 0x7f0b0083;
+		public static final int actions = 0x7f0b0090;
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
 		public static final int activity_chooser_view_content = 0x7f0b0036;
 		public static final int add = 0x7f0b0013;
 		public static final int alertTitle = 0x7f0b0042;
@@ -685,6 +750,7 @@ public final class R {
 		public static final int box_count = 0x7f0b0027;
 		public static final int button = 0x7f0b0028;
 		public static final int buttonPanel = 0x7f0b003d;
+<<<<<<< HEAD
 <<<<<<< HEAD
 		public static final int cancel_action = 0x7f0b0084;
 		public static final int cancel_button = 0x7f0b0071;
@@ -713,6 +779,28 @@ public final class R {
 		public static final int com_facebook_tooltip_bubble_view_text_body = 0x7f0b007b;
 		public static final int com_facebook_tooltip_bubble_view_top_pointer = 0x7f0b0079;
 		public static final int confirmation_code = 0x7f0b006e;
+=======
+		public static final int cancel_action = 0x7f0b0085;
+		public static final int cancel_button = 0x7f0b0072;
+		public static final int center = 0x7f0b002b;
+		public static final int checkbox = 0x7f0b004b;
+		public static final int chronometer = 0x7f0b008d;
+		public static final int collapseActionView = 0x7f0b001e;
+		public static final int com_facebook_body_frame = 0x7f0b0079;
+		public static final int com_facebook_button_xout = 0x7f0b007b;
+		public static final int com_facebook_device_auth_instructions = 0x7f0b0071;
+		public static final int com_facebook_fragment_container = 0x7f0b006e;
+		public static final int com_facebook_login_activity_progress_bar = 0x7f0b0073;
+		public static final int com_facebook_smart_instructions_0 = 0x7f0b0074;
+		public static final int com_facebook_smart_instructions_1 = 0x7f0b0075;
+		public static final int com_facebook_smart_instructions_2 = 0x7f0b0076;
+		public static final int com_facebook_smart_instructions_3 = 0x7f0b0077;
+		public static final int com_facebook_smart_instructions_or = 0x7f0b0078;
+		public static final int com_facebook_tooltip_bubble_view_bottom_pointer = 0x7f0b007d;
+		public static final int com_facebook_tooltip_bubble_view_text_body = 0x7f0b007c;
+		public static final int com_facebook_tooltip_bubble_view_top_pointer = 0x7f0b007a;
+		public static final int confirmation_code = 0x7f0b006f;
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
 		public static final int contentPanel = 0x7f0b0043;
 		public static final int custom = 0x7f0b0049;
 		public static final int customPanel = 0x7f0b0048;
@@ -723,15 +811,20 @@ public final class R {
 		public static final int edit_query = 0x7f0b0056;
 		public static final int end = 0x7f0b001b;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		public static final int end_padder = 0x7f0b0096;
 =======
 		public static final int end_padder = 0x7f0b0092;
 >>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
+=======
+		public static final int end_padder = 0x7f0b0097;
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
 		public static final int expand_activities_button = 0x7f0b0037;
 		public static final int expanded_menu = 0x7f0b004a;
 		public static final int home = 0x7f0b0004;
 		public static final int homeAsUp = 0x7f0b000d;
 		public static final int icon = 0x7f0b003b;
+<<<<<<< HEAD
 <<<<<<< HEAD
 		public static final int icon_group = 0x7f0b0090;
 		public static final int ifRoom = 0x7f0b001f;
@@ -748,25 +841,34 @@ public final class R {
 		public static final int messenger_send_button = 0x7f0b007f;
 =======
 		public static final int icon_group = 0x7f0b008c;
+=======
+		public static final int icon_group = 0x7f0b0091;
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
 		public static final int ifRoom = 0x7f0b001f;
 		public static final int image = 0x7f0b0038;
-		public static final int info = 0x7f0b0089;
+		public static final int info = 0x7f0b008e;
 		public static final int inline = 0x7f0b002a;
 		public static final int large = 0x7f0b0031;
 		public static final int left = 0x7f0b002c;
-		public static final int line1 = 0x7f0b008e;
-		public static final int line3 = 0x7f0b0090;
+		public static final int line1 = 0x7f0b0093;
+		public static final int line3 = 0x7f0b0095;
 		public static final int listMode = 0x7f0b0009;
 		public static final int list_item = 0x7f0b003a;
+<<<<<<< HEAD
 		public static final int media_actions = 0x7f0b0082;
 		public static final int messenger_send_button = 0x7f0b007b;
 >>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
+=======
+		public static final int media_actions = 0x7f0b0087;
+		public static final int messenger_send_button = 0x7f0b0080;
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
 		public static final int middle = 0x7f0b001c;
 		public static final int multiply = 0x7f0b0014;
 		public static final int never = 0x7f0b0020;
 		public static final int never_display = 0x7f0b0030;
 		public static final int none = 0x7f0b000e;
 		public static final int normal = 0x7f0b000a;
+<<<<<<< HEAD
 <<<<<<< HEAD
 		public static final int notification_background = 0x7f0b008e;
 		public static final int notification_main_column = 0x7f0b0089;
@@ -780,10 +882,20 @@ public final class R {
 		public static final int page = 0x7f0b0025;
 		public static final int parentPanel = 0x7f0b003f;
 		public static final int progress_bar = 0x7f0b006f;
+=======
+		public static final int notification_background = 0x7f0b008f;
+		public static final int notification_main_column = 0x7f0b008a;
+		public static final int notification_main_column_container = 0x7f0b0089;
+		public static final int open_graph = 0x7f0b0024;
+		public static final int page = 0x7f0b0025;
+		public static final int parentPanel = 0x7f0b003f;
+		public static final int progress_bar = 0x7f0b0070;
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
 		public static final int progress_circular = 0x7f0b0005;
 		public static final int progress_horizontal = 0x7f0b0006;
 		public static final int radio = 0x7f0b004d;
 		public static final int right = 0x7f0b002d;
+<<<<<<< HEAD
 <<<<<<< HEAD
 		public static final int right_icon = 0x7f0b0091;
 		public static final int right_side = 0x7f0b008a;
@@ -791,6 +903,10 @@ public final class R {
 		public static final int right_icon = 0x7f0b008d;
 		public static final int right_side = 0x7f0b0086;
 >>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
+=======
+		public static final int right_icon = 0x7f0b0092;
+		public static final int right_side = 0x7f0b008b;
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
 		public static final int screen = 0x7f0b0015;
 		public static final int scrollIndicatorDown = 0x7f0b0047;
 		public static final int scrollIndicatorUp = 0x7f0b0044;
@@ -818,6 +934,7 @@ public final class R {
 		public static final int src_over = 0x7f0b0018;
 		public static final int standard = 0x7f0b0029;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		public static final int status_bar_latest_event_content = 0x7f0b0085;
 		public static final int submenuarrow = 0x7f0b004e;
 		public static final int submit_area = 0x7f0b005f;
@@ -828,14 +945,21 @@ public final class R {
 		public static final int time = 0x7f0b008b;
 =======
 		public static final int status_bar_latest_event_content = 0x7f0b0081;
+=======
+		public static final int status_bar_latest_event_content = 0x7f0b0086;
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
 		public static final int submenuarrow = 0x7f0b004e;
 		public static final int submit_area = 0x7f0b005f;
 		public static final int tabMode = 0x7f0b000b;
-		public static final int text = 0x7f0b0091;
-		public static final int text2 = 0x7f0b008f;
+		public static final int text = 0x7f0b0096;
+		public static final int text2 = 0x7f0b0094;
 		public static final int textSpacerNoButtons = 0x7f0b0046;
+<<<<<<< HEAD
 		public static final int time = 0x7f0b0087;
 >>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
+=======
+		public static final int time = 0x7f0b008c;
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
 		public static final int title = 0x7f0b003c;
 		public static final int title_template = 0x7f0b0041;
 		public static final int top = 0x7f0b0023;
@@ -880,6 +1004,9 @@ public final class R {
 		public static final int abc_search_view = 0x7f040018;
 		public static final int abc_select_dialog_material = 0x7f040019;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
 		public static final int com_facebook_activity_layout = 0x7f04001c;
 		public static final int com_facebook_device_auth_dialog_fragment = 0x7f04001d;
 		public static final int com_facebook_login_fragment = 0x7f04001e;
@@ -910,6 +1037,7 @@ public final class R {
 		public static final int select_dialog_multichoice_material = 0x7f040039;
 		public static final int select_dialog_singlechoice_material = 0x7f04003a;
 		public static final int support_simple_spinner_dropdown_item = 0x7f04003b;
+<<<<<<< HEAD
 =======
 		public static final int com_facebook_activity_layout = 0x7f04001b;
 		public static final int com_facebook_device_auth_dialog_fragment = 0x7f04001c;
@@ -942,6 +1070,8 @@ public final class R {
 		public static final int select_dialog_singlechoice_material = 0x7f040039;
 		public static final int support_simple_spinner_dropdown_item = 0x7f04003a;
 >>>>>>> babd2dcc88a7eaeb33c4f42ba258391cc578ecc1
+=======
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
 	}
 	public static final class string {
 		public static final int abc_action_bar_home_description = 0x7f060000;

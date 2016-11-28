@@ -25,7 +25,7 @@ import static java.sql.Types.NULL;
 public class DeviceAdapter extends BaseAdapter{
 
     private LayoutInflater mInflater;
-    private ArrayList<BluetoothDevice> mData;
+    private ArrayList<BluetoothDevice> mData; // all Bluetooth results
     private Context con;
 
     public DeviceAdapter(Context context, ArrayList<BluetoothDevice> devices) {
@@ -55,7 +55,6 @@ public class DeviceAdapter extends BaseAdapter{
 
     protected View bindView(View theView, final int position, ViewGroup parent) {
         TextView name = (TextView) theView.findViewById(R.id.op_name);
-        TextView mac = (TextView) theView.findViewById(R.id.mac_Addr);
         Button play = (Button) theView.findViewById(R.id.play_but);
 
         String deviceName;
@@ -63,17 +62,16 @@ public class DeviceAdapter extends BaseAdapter{
             deviceName = "No Name Retrieved";
         } else {
             deviceName = mData.get(position).getName();
+            deviceName = deviceName.replaceAll("Laser-Chess:", "");
         }
         name.setText(deviceName);
-        mac.setText(mData.get(position).getAddress());
-
 
         // Calls the startTheGame function in OpponentList Activity
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(con instanceof OpponentList){
-                    ((OpponentList)con).startTheGame(mData.get(position).getAddress());
+                    ((OpponentList)con).finishOppList(mData.get(position));
                 }
             }
         });

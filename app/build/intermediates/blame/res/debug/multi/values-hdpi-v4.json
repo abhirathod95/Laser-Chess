@@ -1,6 +1,10 @@
 [
     {
+<<<<<<< HEAD
         "outputFile": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
+=======
+        "outputFile": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hdpi-v4/values-hdpi-v4.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
         "map": [
             {
                 "to": {
@@ -12,7 +16,11 @@
                     "endOffset": 327
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-hdpi-v4/values-hdpi-v4.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

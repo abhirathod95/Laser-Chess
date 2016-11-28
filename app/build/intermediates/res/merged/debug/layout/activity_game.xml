@@ -39,7 +39,19 @@
             android:layout_height="wrap_content"
             android:text="UNDO"/>
 
+<<<<<<< HEAD
         
+=======
+        <Button
+            android:text="test socket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/socketbut"
+            android:layout_weight="0"
+            android:onClick="testSocket" />
+
+
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
     </LinearLayout>
 
     <cs371m.laser_chess.GameBoard

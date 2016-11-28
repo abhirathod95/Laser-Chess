@@ -1,6 +1,10 @@
 [
     {
+<<<<<<< HEAD
         "outputFile": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-it\\values-it.xml",
+=======
+        "outputFile": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
         "map": [
             {
                 "to": {
@@ -11,7 +15,11 @@
                     "endOffset": 159
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -30,7 +38,11 @@
                     "endOffset": 267
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -49,7 +61,11 @@
                     "endOffset": 390
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -68,7 +84,11 @@
                     "endOffset": 490
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -87,7 +107,11 @@
                     "endOffset": 599
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -106,7 +130,11 @@
                     "endOffset": 683
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -125,7 +153,11 @@
                     "endOffset": 792
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -144,7 +176,11 @@
                     "endOffset": 917
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -163,7 +199,11 @@
                     "endOffset": 994
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -182,7 +222,11 @@
                     "endOffset": 1070
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -201,7 +245,11 @@
                     "endOffset": 1151
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -220,7 +268,11 @@
                     "endOffset": 1257
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -239,7 +291,11 @@
                     "endOffset": 1365
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -258,7 +314,11 @@
                     "endOffset": 1463
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -277,7 +337,11 @@
                     "endOffset": 1567
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
@@ -296,7 +360,11 @@
                     "endOffset": 1672
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 17,
                         "startColumn": 4,
@@ -315,7 +383,11 @@
                     "endOffset": 1779
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,
@@ -334,7 +406,11 @@
                     "endOffset": 1901
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -353,7 +429,11 @@
                     "endOffset": 2001
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
@@ -372,7 +452,11 @@
                     "endOffset": 2166
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -392,7 +476,11 @@
                     "endOffset": 2302
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -413,7 +501,11 @@
                     "endOffset": 2444
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -433,7 +525,11 @@
                     "endOffset": 2539
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -452,7 +548,11 @@
                     "endOffset": 2607
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -471,7 +571,11 @@
                     "endOffset": 2679
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -490,7 +594,11 @@
                     "endOffset": 2741
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -509,7 +617,11 @@
                     "endOffset": 2814
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -528,7 +640,11 @@
                     "endOffset": 2886
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -547,7 +663,11 @@
                     "endOffset": 2976
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -566,7 +686,11 @@
                     "endOffset": 3047
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -585,7 +709,11 @@
                     "endOffset": 3118
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -604,7 +732,11 @@
                     "endOffset": 3212
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
@@ -623,7 +755,11 @@
                     "endOffset": 3320
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 17,
                         "startColumn": 4,
@@ -642,7 +778,11 @@
                     "endOffset": 3384
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,
@@ -661,7 +801,11 @@
                     "endOffset": 3453
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -680,7 +824,11 @@
                     "endOffset": 3608
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
@@ -699,7 +847,11 @@
                     "endOffset": 3669
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.17.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -718,7 +870,11 @@
                     "endOffset": 3752
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -737,7 +893,11 @@
                     "endOffset": 3853
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Abhi\\Desktop\\Classes\\Laser-Chess\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\values-it\\values-it.xml",
+=======
+                    "file": "/Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-it/values-it.xml",
+>>>>>>> 533de6385ab7c7e1e1805be245944cc6f5e57207
                     "position": {
                         "startLine": 22,
                         "startColumn": 4,
