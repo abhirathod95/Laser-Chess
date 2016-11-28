@@ -118,6 +118,7 @@ public class GameLogic extends FragmentActivity {
         });
     }
 
+    // MESSAGES GO HERE, THIS IS WHERE WE PROB WILL HANDLE ENDTURN STUFF
     public Handler mHandler = new Handler(){
         public void handleMessage(Message msg) {
             Toast.makeText(getApplicationContext(), "message received",Toast.LENGTH_SHORT).show();
