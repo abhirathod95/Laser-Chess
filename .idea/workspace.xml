@@ -100,15 +100,15 @@
       <file leaf-file-name="GameLogic.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/cs371m/laser_chess/GameLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="120" column="72" selection-start-line="120" selection-start-column="72" selection-end-line="120" selection-end-column="72" />
+            <state relative-caret-position="402">
+              <caret line="196" column="20" selection-start-line="196" selection-start-column="20" selection-end-line="196" selection-end-column="20" />
               <folding>
-                <element signature="e#4381#4559#0" expanded="true" />
-                <element signature="e#4558#4559#0" expanded="true" />
-                <element signature="e#4600#4601#0" expanded="true" />
-                <element signature="e#4648#4649#0" expanded="true" />
-                <element signature="e#5427#6403#0" expanded="true" />
-                <element signature="e#6402#6403#0" expanded="true" />
+                <element signature="e#4687#4865#0" expanded="true" />
+                <element signature="e#4864#4865#0" expanded="true" />
+                <element signature="e#5099#5100#0" expanded="true" />
+                <element signature="e#5147#5148#0" expanded="true" />
+                <element signature="e#6182#7158#0" expanded="true" />
+                <element signature="e#7157#7158#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2588,15 +2588,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/cs371m/laser_chess/GameLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="120" column="72" selection-start-line="120" selection-start-column="72" selection-end-line="120" selection-end-column="72" />
+        <state relative-caret-position="402">
+          <caret line="196" column="20" selection-start-line="196" selection-start-column="20" selection-end-line="196" selection-end-column="20" />
           <folding>
-            <element signature="e#4381#4559#0" expanded="true" />
-            <element signature="e#4558#4559#0" expanded="true" />
-            <element signature="e#4600#4601#0" expanded="true" />
-            <element signature="e#4648#4649#0" expanded="true" />
-            <element signature="e#5427#6403#0" expanded="true" />
-            <element signature="e#6402#6403#0" expanded="true" />
+            <element signature="e#4687#4865#0" expanded="true" />
+            <element signature="e#4864#4865#0" expanded="true" />
+            <element signature="e#5099#5100#0" expanded="true" />
+            <element signature="e#5147#5148#0" expanded="true" />
+            <element signature="e#6182#7158#0" expanded="true" />
+            <element signature="e#7157#7158#0" expanded="true" />
           </folding>
         </state>
       </provider>

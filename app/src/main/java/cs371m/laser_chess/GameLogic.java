@@ -29,8 +29,10 @@ public class GameLogic extends FragmentActivity {
 
     private BluetoothSocket btSocket;
     final int MESSAGE_READ = 8888;
-    private boolean host;
-    ConnectedThread thread;
+    private boolean userTurn;
+    ConnectedThread thread; // THIS IS OUR BIG BAD THREAD THAT DOES ALL MESSAGE EXCHANGE.
+    // I INITIALIZE THIS BITCH FOR YOU SO YOU DONT HAVE TO, JUST CALL thread.write() WHEN A PLAYER
+    // MOVES A PIECE OR SOMESHIT YOU HANDLE THE REST
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +49,8 @@ public class GameLogic extends FragmentActivity {
         gameBoard.invalidate();
 
 
-        // I identify host for who goes first. take care of that later abhi
-        host = getIntent().getBooleanExtra("host", false);
+        // I identify who is hosting for who goes first. you're welcome I did your work for you
+        userTurn = getIntent().getBooleanExtra("host", false);
 
         btSocket = SocketManager.getSocket();
         thread = new ConnectedThread(btSocket);
@@ -58,6 +60,9 @@ public class GameLogic extends FragmentActivity {
 
     public void turnOver() {
         // add sending the data here
+
+        // WONT WORK. do it in the handler method i wrote below
+
         gameBoard.invalidate();
         Toast.makeText(getApplicationContext(), "Turn over!", Toast.LENGTH_LONG).show();
     }
@@ -118,24 +123,29 @@ public class GameLogic extends FragmentActivity {
         });
     }
 
-    // MESSAGES GO HERE, THIS IS WHERE WE PROB WILL HANDLE ENDTURN STUFF
+    // MESSAGES GO HERE, THIS IS WHERE WE HAVE TO HANDLE ENDTURN STUFF
     public Handler mHandler = new Handler(){
         public void handleMessage(Message msg) {
             Toast.makeText(getApplicationContext(), "message received",Toast.LENGTH_SHORT).show();
         }
     };
 
-
+    // example of sending a message using my ConnectedThread.
+    // messages are sent in Byte[] form
+    // just make it so that any board movement calls some method that calls write on thread
     public void testSocket(View view){
         thread.write(("lul").getBytes());
     }
 
 
+    // code adapted from android bluetooth documentation. changed to run in background thread so
+    // that the ui thread doesn't cock itself
     private class ConnectedThread{
         private final BluetoothSocket mmSocket;
         private final InputStream mmInStream;
         private final OutputStream mmOutStream;
 
+        // Dont ever call this constructor, i do it for us
         public ConnectedThread(BluetoothSocket socket) {
             mmSocket = socket;
             InputStream tmpIn = null;
@@ -152,6 +162,7 @@ public class GameLogic extends FragmentActivity {
             mmOutStream = tmpOut;
         }
 
+        // I CALL THIS FOR US DONT EVER USE THIS ABHI
         public void runThread() {
             new Thread(
                     new Runnable() {
@@ -176,14 +187,14 @@ public class GameLogic extends FragmentActivity {
             ).start();
         }
 
-        /* Call this from the main activity to send data to the remote device */
+        /* Call this to send data to the remote device */
         public void write(byte[] bytes) {
             try {
                 mmOutStream.write(bytes);
             } catch (IOException e) { }
         }
 
-        /* Call this from the main activity to shutdown the connection */
+        /* Call this to shutdown the connection */
         public void cancel() {
             try {
                 mmSocket.close();
