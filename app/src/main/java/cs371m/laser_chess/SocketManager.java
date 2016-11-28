@@ -1,25 +1,25 @@
 package cs371m.laser_chess;
 
+import android.app.Application;
 import android.bluetooth.BluetoothSocket;
 
-import java.io.Serializable;
 
 /**
  * Created by daniel on 11/27/16.
  */
 
-public class SocketManager implements Serializable{
+public final class SocketManager extends Application {
 
-    BluetoothSocket sock;
+    static BluetoothSocket sock;
 
-    public SocketManager(){
+    private SocketManager(){
     }
 
-    public void setSocket(BluetoothSocket s){
+    public static void setSocket(BluetoothSocket s){
         sock = s;
     }
 
-    public BluetoothSocket getSocket(){
+    public static BluetoothSocket getSocket(){
         return sock;
     }
 }

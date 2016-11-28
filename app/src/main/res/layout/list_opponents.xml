@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="Choose an opponent with Laser Chess on their device."
+        android:text="These people are hosting a Laser-Chess match."
         android:layout_width="match_parent"
         android:id="@+id/list_title"
         android:gravity="center_vertical|center_horizontal"

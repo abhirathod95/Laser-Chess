@@ -36,7 +36,7 @@ ADDED from /Users/daniel/Documents/Laser-Chess/app/src/main/AndroidManifest.xml:
 	android:name
 		ADDED from /Users/daniel/Documents/Laser-Chess/app/src/main/AndroidManifest.xml:11:22-76
 application
-ADDED from /Users/daniel/Documents/Laser-Chess/app/src/main/AndroidManifest.xml:13:5-74:19
+ADDED from /Users/daniel/Documents/Laser-Chess/app/src/main/AndroidManifest.xml:13:5-75:19
 MERGED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:28:5-38:19
 MERGED from [com.android.support:support-v4:25.0.0] /Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:25.0.0] /Users/daniel/Documents/Laser-Chess/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/AndroidManifest.xml:25:5-20

@@ -1,12 +1,8 @@
 package cs371m.laser_chess;
 
 import android.app.Activity;
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothServerSocket;
-import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
-import android.graphics.Path;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -34,8 +30,10 @@ public class OpponentList extends Activity {
 
         mDataPlayers = new ArrayList<BluetoothDevice>();
         for (BluetoothDevice device: mDeviceList){
-            if (device.getName().startsWith("Laser-Chess:")){
-                mDataPlayers.add(device);
+            if (device != null && device.getName() != null) {
+                if (device.getName().startsWith("Laser-Chess: ")) {
+                    mDataPlayers.add(device);
+                }
             }
         }
         mListView = (ListView) findViewById(R.id.op_list);
@@ -43,16 +41,14 @@ public class OpponentList extends Activity {
         mListView.setAdapter(mAdapter);
     }
 
-    public void startTheGame(String mac){
-        Toast.makeText(getApplicationContext(), "MAC Address: "+mac,Toast.LENGTH_SHORT).show();
+    public void finishOppList(BluetoothDevice dev){
 
-        Intent newGame = new Intent(OpponentList.this, GameLogic.class);
+        Intent returnIntent = new Intent();
         Bundle b = new Bundle();
-
-        // add bluetooth socket into bundle here
-        newGame.putExtra("mac", mac);
-
+        b.putParcelable("targetDevice", dev);
+        returnIntent.putExtras(b);
+        setResult(Activity.RESULT_OK, returnIntent);
         finish();
-        startActivity(newGame);
+
     }
 }
