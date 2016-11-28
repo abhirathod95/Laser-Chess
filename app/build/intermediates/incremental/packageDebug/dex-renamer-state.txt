@@ -1,4 +1,4 @@
-#Mon Nov 28 05:50:07 MST 2016
+#Mon Nov 28 10:32:05 MST 2016
 base.0=/Users/daniel/Documents/Laser-Chess/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d50c667703ed6981668d5d1895676b5d06f0de80
 renamed.1=classes.dex
 renamed.0=classes2.dex

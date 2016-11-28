@@ -72,13 +72,16 @@ public class MainActivity extends FragmentActivity {
     ArrayList<BluetoothDevice> mDeviceList;
 
     @Override
+    /**
+     * big bad oncreate. avert your eyes if you are not used to graphic displays of gore
+     * NOT boilerplate
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         cancel = false;
 
-        // Dialogue code taken from Bluetooth tutorial at // http://www.londatiga.net
         findingDialogue = new ProgressDialog(this);
         findingDialogue.setCancelable(false);
         findingDialogue.setMessage("Looking for opponents...");
@@ -91,7 +94,6 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
-        // Dialogue code adapted from Bluetooth tutorial at // http://www.londatiga.net
         hostingDialogue = new ProgressDialog(this);
         hostingDialogue.setCancelable(false);
         hostingDialogue.setMessage("Waiting for opponents...");
@@ -103,8 +105,6 @@ public class MainActivity extends FragmentActivity {
                 mBluetoothAdapter.getDefaultAdapter().disable();
                 mBluetoothAdapter.getDefaultAdapter().enable();
                 cancel();
-
-
             }
         });
 
@@ -155,7 +155,6 @@ public class MainActivity extends FragmentActivity {
         // Facebook button callback.
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
-            // http://stackoverflow.com/questions/33139932/how-to-get-email-id-from-android-facebook-sdk-4-6-0
             public void onSuccess(LoginResult loginResult) {
             }
 
@@ -176,7 +175,10 @@ public class MainActivity extends FragmentActivity {
         title.setText("Laser Chess");
     }
 
-    // Facebook login activity result.
+    /**
+     *  Handles results for facebook, listview, and permissions as of right now
+     *  NOT boilerplate
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_ENABLE_BT){
@@ -194,12 +196,11 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-
-    // https://developer.android.com/guide/topics/connectivity/bluetooth.html
-    // Create a BroadcastReceiver for ACTION_FOUND
+    /** boilerplate with minor alterations
+     * https://developer.android.com/guide/topics/connectivity/bluetooth.html
+     */
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
-
 
             String action = intent.getAction();
             // When discovery finds a device
@@ -222,7 +223,10 @@ public class MainActivity extends FragmentActivity {
         }
     };
 
-    // OnClick for Host a Match. Makes the device discoverable. Opens a BluetoothServerSocket.
+    /** OnClick for Host a Match. Makes the device discoverable. Opens a BluetoothServerSocket in
+     * the AcceptThread.
+     *  NOT boilerplate.
+     */
     public void hostClick(View v){
         if (!loggedIn){
             Toast.makeText(getApplicationContext(), "Log in to host a match!",Toast.LENGTH_SHORT).show();
@@ -238,10 +242,8 @@ public class MainActivity extends FragmentActivity {
                 Profile profile = Profile.getCurrentProfile();
                 username = "Laser-Chess: " +profile.getFirstName() + " " + profile.getLastName();
                 mBluetoothAdapter.setName(username);
-                // Gets already paired devices.
-                //mDeviceList = new ArrayList<BluetoothDevice>(mBluetoothAdapter.getBondedDevices());
 
-                // LOL this is absolutely retarded but it is the only way, I promise.
+                // LOL this is absolutely retarded but it is the only way.
                 Method method;
                 try {
                     method = mBluetoothAdapter.getClass().getMethod("setScanMode", int.class, int.class);
@@ -253,13 +255,14 @@ public class MainActivity extends FragmentActivity {
                 catch (Exception e){
                     e.printStackTrace();
                 }
-
             }
         }
     }
 
-    // OnClick for Find a Match. Uses startDiscovery() to look for devices.
-    // Opens a BluetoothSocket to connect to hosts.
+    /** OnClick for Find a Match. Uses startDiscovery() to look for devices.
+     * Opens a BluetoothSocket to connect to hosts in the ConnectThread.
+     * NOT boilerplate
+     **/
     public void findClick(View v){
         if (!loggedIn){
             Toast.makeText(getApplicationContext(), "Log in to find a match!",Toast.LENGTH_SHORT).show();
@@ -272,17 +275,15 @@ public class MainActivity extends FragmentActivity {
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             } else {
-                // Gets already paired devices.
-                //mDeviceList = new ArrayList<BluetoothDevice>(mBluetoothAdapter.getBondedDevices());
-
                 mDeviceList = new ArrayList<BluetoothDevice>();
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION);
             }
         }
     }
 
-
-    // https://developer.android.com/training/permissions/requesting.html?hl=es#perm-check
+    /** boilerplate code
+     *  https://developer.android.com/guide/topics/connectivity/bluetooth.html
+     **/
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
         switch (requestCode) {
@@ -318,7 +319,7 @@ public class MainActivity extends FragmentActivity {
 
 
     /** Handles the unregistering of the broadcast receiver.
-     *
+     * NOT boilerplate
      */
     public void onDestroy() {
         try{
@@ -334,6 +335,7 @@ public class MainActivity extends FragmentActivity {
 
     /** Delay after cancelling a Host. This gives the Bluetooth Adapter time to turn back on after
      *  cancelling discoverability.
+     *  NOT boilerplate
      */
     public void cancel(){
         cancel=true;
@@ -345,7 +347,6 @@ public class MainActivity extends FragmentActivity {
 
         find.setEnabled(false);
         host.setEnabled(false);
-
 
         Timer buttonTimer = new Timer();
         buttonTimer.schedule(new TimerTask() {
@@ -360,16 +361,15 @@ public class MainActivity extends FragmentActivity {
                 });
             }
         }, 1500);
-
         mBluetoothAdapter.getDefaultAdapter().enable();
-
-    }
-
-    public BluetoothSocket getSocket(){
-        return mainSocket;
     }
 
 
+    /**
+     * NOT boilerplate
+     *  Called eventually by the host AND the player to connect to the host.
+     *  I distinguish the host for the sole reason of knowing who goes first.
+     */
     public void startGame(BluetoothSocket sock, Boolean host){
 
         hostingDialogue.dismiss();
@@ -382,8 +382,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     /**
-     * Created by daniel on 11/27/16.
-     * This started out as a simple nested thread, but it went rogue on me.
+     * boilerplate code with severe threading alterations
      * https://developer.android.com/guide/topics/connectivity/bluetooth.html#ConnectingDevices
      */
     public class AcceptThread{
@@ -443,7 +442,8 @@ public class MainActivity extends FragmentActivity {
 
 
     /**
-     * Another thread class, courtesy of android Bluetooth documentation with slight modifications.
+     * Another thread class, courtesy of android Bluetooth documentation.
+     * boilerplate code with severe threading alterations
      */
     private class ConnectThread {
         private final BluetoothSocket mmSocket;

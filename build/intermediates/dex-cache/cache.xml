@@ -61,7 +61,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="8ccf61f156fc60cec12bf89f46d640862f71b5ca">
+        sha1="75ea2248f0b4a5be714ab7986ebaeff43d405a64">
         <dex dex="/Users/daniel/Documents/Laser-Chess/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d50c667703ed6981668d5d1895676b5d06f0de80/classes.dex" />
     </item>
     <item
@@ -106,7 +106,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="e64a3eeb6108d2c3957b9cd6e600bec99f3788c2">
+        sha1="3509549f834197cfc039cbce92b33652611048c5">
         <dex dex="/Users/daniel/Documents/Laser-Chess/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b83fd6f82505f598cc39df9998b147059c313d40/classes.dex" />
     </item>
     <item
