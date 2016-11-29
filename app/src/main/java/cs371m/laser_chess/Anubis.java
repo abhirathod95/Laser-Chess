@@ -19,4 +19,12 @@ public class Anubis extends Piece {
             rotate(180);
         }
     }
+
+    @Override
+    public int reflectedSide(int side) {
+        if(side == this.orient)
+            return -2;
+        else
+            return -1;
+    }
 }

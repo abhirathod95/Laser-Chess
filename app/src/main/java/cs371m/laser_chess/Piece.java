@@ -2,9 +2,11 @@ package cs371m.laser_chess;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.widget.Toast;
+
+import java.util.EnumSet;
+
 
 /**
  * Created by Abhi on 11/9/2016.
@@ -22,6 +24,8 @@ public class Piece {
     protected boolean friendly;
     protected boolean rotatable;
     protected boolean movable;
+    // 0 for default png, 1 for rotated 90 degrees, 2 for rotated 180, etc...
+    protected int orient;
 
     public Piece(Context context, boolean friendly) {
         this.mContext = context;
@@ -29,6 +33,7 @@ public class Piece {
         bitmap = null;
         rotatable = true;
         movable = true;
+        orient = 0;
     }
 
     public Piece copy() {
@@ -60,7 +65,21 @@ public class Piece {
         return friendly;
     }
 
+    // ANGLE SHOULD ALWAYS BE 90, 180 or 270 IN OUR CASE
     public void rotate(float angle) {
+        if (angle == 0 || angle == 360 || angle == -360)
+            return;
+
+        int newAng;
+        if(angle > 0) {
+            newAng = ((int) angle) / 90;
+            this.orient = (newAng + this.orient) % 4;
+            System.out.println(orient);
+        } else {
+            newAng = ((int) angle) / 90;
+            this.orient = (4 - newAng + this.orient) % 4;
+            System.out.println(orient);
+        }
         Matrix matrix = new Matrix();
         matrix.postRotate(angle);
         bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
@@ -80,5 +99,13 @@ public class Piece {
             from.setPiece(null);
         }
         return true;
+    }
+
+
+    // -2 means piece was hit but don't remove, stop the laser
+    // -1 means the piece was hit and needs to be removed, stop the laser
+    // else, laser came out from the returned int side
+    public int reflectedSide(int laserIn) {
+        return -1;
     }
 }

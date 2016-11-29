@@ -21,4 +21,9 @@ public class Sphinx extends Piece {
         }
         movable = false;
     }
+
+    @Override
+    public int reflectedSide(int laserIn) {
+        return -2;
+    }
 }
