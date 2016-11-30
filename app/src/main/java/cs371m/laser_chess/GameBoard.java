@@ -24,11 +24,14 @@ import java.util.List;
 public class GameBoard extends View {
 
     private Paint paint;
+    private float startX, startY, endX, endY;
     private Cell[][] cells = null;
+    private List<Float> laser = new ArrayList<Float>();
     private int cellHeight;
     private int cellWidth;
     private int numRows;
     private int numColumns;
+    private GameLogic.Color playerColor;
 
     public GameBoard(Context context, AttributeSet aSet) {
         super(context, aSet);
@@ -52,25 +55,29 @@ public class GameBoard extends View {
 
     synchronized private void initializePieces() {
         // Create the board
-        cells = new Cell[8][10];
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 10; j++) {
+        cells = new Cell[numRows][numColumns];
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numColumns; j++) {
                 Cell currCell = new Cell(j * cellWidth, i * cellHeight, cellWidth, cellHeight, Cell.Type.EMPTY);
                 cells[i][j] = (currCell);
             }
         }
 
+        Boolean isBlack = false;
+        if(playerColor == GameLogic.Color.BLACK)
+            isBlack = true;
+
         // Create the pieces
-        Piece sphinx = new Sphinx(getContext(), true);
-        Piece red_sphinx = new Sphinx(getContext(), false);
-        Piece scarab = new Scarab(getContext(), true);
-        Piece red_scarab = new Scarab(getContext(), false);
-        Piece pyramid = new Pyramid(getContext(), true);
-        Piece red_pyramid = new Pyramid(getContext(), false);
-        Piece anubis = new Anubis(getContext(), true);
-        Piece red_anubis = new Anubis(getContext(), false);
-        Piece pharaoh = new Pharaoh(getContext(), true);
-        Piece red_pharaoh = new Pharaoh(getContext(), false);
+        Piece sphinx = new Sphinx(getContext(), isBlack, GameLogic.Color.BLACK);
+        Piece red_sphinx = new Sphinx(getContext(), !isBlack,GameLogic.Color.RED);
+        Piece scarab = new Scarab(getContext(), isBlack, GameLogic.Color.BLACK);
+        Piece red_scarab = new Scarab(getContext(), !isBlack, GameLogic.Color.RED);
+        Piece pyramid = new Pyramid(getContext(), isBlack, GameLogic.Color.BLACK);
+        Piece red_pyramid = new Pyramid(getContext(), !isBlack, GameLogic.Color.RED);
+        Piece anubis = new Anubis(getContext(), isBlack, GameLogic.Color.BLACK);
+        Piece red_anubis = new Anubis(getContext(), !isBlack, GameLogic.Color.RED);
+        Piece pharaoh = new Pharaoh(getContext(), isBlack, GameLogic.Color.BLACK);
+        Piece red_pharaoh = new Pharaoh(getContext(), !isBlack, GameLogic.Color.RED);
 
         // Initial configuration of pieces
 
@@ -96,7 +103,6 @@ public class GameBoard extends View {
         cells[7][3].setPiece(red_anubis);
         cells[7][5].setPiece(red_anubis.copy());
 
-
         // Black Pyramids
         cells[3][2].setPiece(pyramid);
         cells[4][9].setPiece(pyramid.copy());
@@ -118,12 +124,11 @@ public class GameBoard extends View {
         cells[3][0].setPiece(red_pyramid.copy());
         cells[3][0].piece.rotate(180);
         cells[4][7].setPiece(cells[3][0].piece.copy());
-
-
     }
 
     @Override
     synchronized public void onDraw(Canvas canvas) {
+        Cell selectedCell = null;
 
         //create a black canvas
         paint.setColor(Color.GRAY);
@@ -143,11 +148,69 @@ public class GameBoard extends View {
         for(int i = 0; i < numRows; i++) {
             for(int j = 0; j < numColumns; j++) {
                 Cell cell = cells[i][j];
-                canvas.drawRect(cell.getBackground(), paint);
+                if(cell.isCurrentlySelected()) {
+                    selectedCell = cell;
+                    continue;
+                }
                 if (cell.getPiece() != null) {
                     canvas.drawBitmap(cell.getPiece().getBitmap(), null, cell.getBackground(), paint);
                 }
+                canvas.drawRect(cell.getBackground(), paint);
             }
         }
+
+
+        // Draw the selected cell last on top with a different stroke
+        //paint.setColor(Color.WHITE);
+        paint.setStrokeWidth(15);
+        if(selectedCell != null){
+            if (selectedCell.getPiece() != null) {
+                canvas.drawBitmap(selectedCell.getPiece().getBitmap(), null, selectedCell.getBackground(), paint);
+            }
+            canvas.drawRect(selectedCell.getBackground(), paint);
+        }
+
+        // Draw the laser
+        float[] laser = getFloatArr();
+        if(laser.length > 0) {
+            System.out.println(startX + " " + startY + " " + endX + " " + endY);
+            paint.setColor(Color.RED);
+            canvas.drawLines(laser, paint);
+        }
+    }
+
+    public void setColor(GameLogic.Color color) {
+        this.playerColor = color;
+    }
+
+    public Cell getCell(int i, int j) {
+        return cells[i][j];
+    }
+
+    public int getNumColumns() {
+        return numColumns;
+    }
+
+    public int getNumRows() {
+        return numRows;
+    }
+
+    public void addLaserPoint(float x, float y){
+        laser.add(x);
+        laser.add(y);
+    }
+
+    public void clearLaser() {
+        laser.clear();
+    }
+
+    public float[] getFloatArr() {
+        int i = 0;
+        float[] points = new float[laser.size()];
+        for (Float f : laser) {
+            points[i++] = (f != null ? f : Float.NaN); // Or whatever default you want.
+        }
+        laser.clear();
+        return points;
     }
 }

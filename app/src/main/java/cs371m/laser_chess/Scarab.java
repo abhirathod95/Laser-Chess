@@ -10,13 +10,52 @@ import android.graphics.BitmapFactory;
 
 public class Scarab extends Piece{
 
-    public Scarab(Context context, boolean friendly){
-        super(context, friendly);
+    public Scarab(Context context, boolean friendly, GameLogic.Color bitmapColor){
+        super(context, friendly, bitmapColor);
         this.type = Type.SCARAB;
-        if(!isFriendly()) {
+        if(getBitmapColor() == GameLogic.Color.RED) {
             bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.red_scarab);
         } else {
             bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.scarab);
         }
     }
+
+    @Override
+    public int reflectedSide(int side) {
+        switch(this.orient) {
+            case 0:
+            case 2:
+                switch(side) {
+                    case 0:
+                        return 1;
+                    case 1:
+                        return 0;
+                    case 2:
+                        return 3;
+                    case 3:
+                        return 2;
+                    default:
+                        System.out.println("IN SIDE IS OUT OF BOUNDS");
+                        return -1;
+                }
+            case 1:
+            case 3:
+                switch(side) {
+                    case 0:
+                        return 3;
+                    case 1:
+                        return 2;
+                    case 2:
+                        return 1;
+                    case 3:
+                        return 0;
+                    default:
+                        System.out.println("IN SIDE IS OUT OF BOUNDS");
+                        return -1;
+                }
+        }
+        System.out.println("ORIENTATION IS OUT OF BOUNDS");
+        return -1;
+    }
+
 }

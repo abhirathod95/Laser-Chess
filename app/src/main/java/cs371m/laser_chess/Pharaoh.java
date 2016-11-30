@@ -9,10 +9,10 @@ import android.graphics.BitmapFactory;
 
 public class Pharaoh extends Piece {
 
-    public Pharaoh(Context context, boolean friendly){
-        super(context, friendly);
+    public Pharaoh(Context context, boolean friendly, GameLogic.Color bitmapColor){
+        super(context, friendly, bitmapColor);
         this.type = Type.PHARAOH;
-        if(!isFriendly()) {
+        if(getBitmapColor() == GameLogic.Color.RED) {
             bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.red_pharaoh);
         } else {
             bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.pharaoh);

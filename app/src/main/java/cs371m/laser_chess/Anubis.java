@@ -9,14 +9,22 @@ import android.graphics.BitmapFactory;
 
 public class Anubis extends Piece {
 
-    public Anubis(Context context, boolean friendly){
-        super(context, friendly);
+    public Anubis(Context context, boolean friendly, GameLogic.Color bitmapColor){
+        super(context, friendly, bitmapColor);
         this.type = Type.ANUBIS;
-        if(!isFriendly()) {
+        if(getBitmapColor() == GameLogic.Color.RED) {
             bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.red_anubis);
         } else {
             bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.anubis);
             rotate(180);
         }
+    }
+
+    @Override
+    public int reflectedSide(int side) {
+        if(side == this.orient)
+            return -2;
+        else
+            return -1;
     }
 }
