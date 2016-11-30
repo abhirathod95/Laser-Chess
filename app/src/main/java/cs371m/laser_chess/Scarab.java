@@ -10,10 +10,10 @@ import android.graphics.BitmapFactory;
 
 public class Scarab extends Piece{
 
-    public Scarab(Context context, boolean friendly){
-        super(context, friendly);
+    public Scarab(Context context, boolean friendly, GameLogic.Color bitmapColor){
+        super(context, friendly, bitmapColor);
         this.type = Type.SCARAB;
-        if(!isFriendly()) {
+        if(getBitmapColor() == GameLogic.Color.RED) {
             bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.red_scarab);
         } else {
             bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.scarab);

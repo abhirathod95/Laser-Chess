@@ -10,10 +10,10 @@ import android.graphics.BitmapFactory;
 
 public class Pyramid extends Piece{
 
-    public Pyramid(Context context, boolean friendly){
-        super(context, friendly);
+    public Pyramid(Context context, boolean friendly, GameLogic.Color bitmapColor){
+        super(context, friendly, bitmapColor);
         this.type = Type.PYRAMID;
-        if(!isFriendly()) {
+        if(getBitmapColor() == GameLogic.Color.RED) {
             bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.red_pyramid);
         } else {
             bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.pyramid);
@@ -22,6 +22,7 @@ public class Pyramid extends Piece{
 
     @Override
     public int reflectedSide(int side) {
+        System.out.println("THE IN: " + side + " AND THE ORIENT: " + this.orient);
         switch(this.orient) {
             case 0:
                 if(side == 2)

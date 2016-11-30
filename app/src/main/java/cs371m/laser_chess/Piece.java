@@ -26,10 +26,13 @@ public class Piece {
     protected boolean movable;
     // 0 for default png, 1 for rotated 90 degrees, 2 for rotated 180, etc...
     protected int orient;
+    protected GameLogic.Color bitmapColor;
 
-    public Piece(Context context, boolean friendly) {
+    public Piece(Context context, boolean friendly, GameLogic.Color bitmapColor) {
         this.mContext = context;
         this.friendly = friendly;
+        this.bitmapColor = bitmapColor;
+
         bitmap = null;
         rotatable = true;
         movable = true;
@@ -37,12 +40,31 @@ public class Piece {
     }
 
     public Piece copy() {
-        Piece piece = new Piece(mContext, friendly);
+        Piece piece;
+        if (type == Type.PYRAMID)
+            piece = new Pyramid(mContext, friendly, bitmapColor);
+        else if (type == Type.SPHINX)
+            piece = new Sphinx(mContext, friendly, bitmapColor);
+        else if (type == Type.ANUBIS)
+            piece = new Anubis(mContext, friendly, bitmapColor);
+        else if (type == Type.PHARAOH)
+            piece = new Pharaoh(mContext, friendly, bitmapColor);
+        else if (type == Type.SCARAB)
+            piece = new Scarab(mContext, friendly, bitmapColor);
+        else{
+            System.out.println("ERROR COPYING TYPE NOT SET");
+            piece = new Piece(mContext, friendly, bitmapColor);
+        }
         piece.bitmap = this.bitmap;
         piece.type = this.type;
+        piece.movable = this.movable;
         piece.rotatable = this.rotatable;
-
+        piece.orient = this.orient;
         return piece;
+    }
+
+    public int getOrient() {
+        return orient;
     }
 
     public boolean isMovable() {
@@ -65,24 +87,35 @@ public class Piece {
         return friendly;
     }
 
-    // ANGLE SHOULD ALWAYS BE 90, 180 or 270 IN OUR CASE
-    public void rotate(float angle) {
-        if (angle == 0 || angle == 360 || angle == -360)
-            return;
+    public GameLogic.Color getBitmapColor() {
+        return bitmapColor;
+    }
 
-        int newAng;
+    protected int getNewOrient(float angle) {
+        int newOrient, newAng;
+
         if(angle > 0) {
             newAng = ((int) angle) / 90;
-            this.orient = (newAng + this.orient) % 4;
-            System.out.println(orient);
+            newOrient = (newAng + this.orient) % 4;
+            System.out.println("NEW ORIENTATION: " + newOrient);
         } else {
-            newAng = ((int) angle) / 90;
-            this.orient = (4 - newAng + this.orient) % 4;
-            System.out.println(orient);
+            newAng = ((int) angle * -1) / 90;
+            newOrient = (4 - newAng + this.orient) % 4;
+            System.out.println("NEW ORIENTATION: " + newOrient);
         }
+        return newOrient;
+    }
+
+    // ANGLE SHOULD ALWAYS BE 90, 180 or 270 IN OUR CASE
+    public boolean rotate(float angle) {
+        //System.out.println("COMING FROM PIECE");
+        if (angle == 0 || angle == 360 || angle == -360)
+            return false;
+        this.orient = getNewOrient(angle);
         Matrix matrix = new Matrix();
         matrix.postRotate(angle);
         bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+        return true;
     }
 
     public boolean move(Cell from, Cell to) {
@@ -106,6 +139,7 @@ public class Piece {
     // -1 means the piece was hit and needs to be removed, stop the laser
     // else, laser came out from the returned int side
     public int reflectedSide(int laserIn) {
+        System.out.println("INSIDE FROM PIECE");
         return -1;
     }
 }

@@ -33,20 +33,20 @@
                 android:id="@+id/rotate_right"/>
         </RelativeLayout>
 
-        <Button
-            android:layout_weight="0"
+        <TextView
+            android:id="@+id/colorText"
+            android:paddingTop="20dp"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="UNDO"/>
+            android:textSize="15sp"/>
 
-        <Button
-            android:text="test socket"
+        <TextView
+            android:id="@+id/turnText"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/socketbut"
-            android:layout_weight="0"
-            android:onClick="testSocket" />
-
+            android:textSize="15sp"/>
 
     </LinearLayout>
 

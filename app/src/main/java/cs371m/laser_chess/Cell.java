@@ -21,8 +21,11 @@ public class Cell {
     protected int y;
     protected int width;
     protected int height;
+    protected boolean currentlySelected;
+    protected boolean hasLaser;
 
     public Cell(int x, int y, int width, int height, Type type) {
+        this.currentlySelected = false;
         this.x = x;
         this.y = y;
         this.width = width;
@@ -32,8 +35,32 @@ public class Cell {
         this.piece = null;
     }
 
+    public void setHasLaser(boolean hasLaser) {
+        this.hasLaser = hasLaser;
+    }
+
+    public boolean gethasLaser() {
+        return hasLaser;
+    }
+
+    public int getI() {
+        return y / height;
+    }
+
+    public int getJ() {
+        return x / width;
+    }
+
     public Rect getBackground() {
         return background;
+    }
+
+    public void setCurrentlySelected(boolean currentlySelected) {
+        this.currentlySelected = currentlySelected;
+    }
+
+    public boolean isCurrentlySelected() {
+        return currentlySelected;
     }
 
     public Type getType() {
