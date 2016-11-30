@@ -340,7 +340,9 @@ public class MainActivity extends FragmentActivity {
     public void cancel(){
         cancel=true;
 
-        hostThread.cancel();
+        if (hostThread!=null) {
+            hostThread.cancel();
+        }
 
         final Button find = (Button) findViewById(R.id.findmatch_but);
         final Button host = (Button) findViewById(R.id.hostmatch_but);
