@@ -130,7 +130,8 @@ public class Piece {
         if(to.getPiece() == null) {
             to.setPiece(from.getPiece());
             from.setPiece(null);
-        }
+        } else
+            return false;
         return true;
     }
 

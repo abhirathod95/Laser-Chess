@@ -1,6 +1,10 @@
 package cs371m.laser_chess;
 
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothSocket;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -28,12 +32,14 @@ public class GameLogic extends FragmentActivity {
         BLACK, RED
     }
 
+    private String username;
+    private String enemyUsername;
     private ImageButton rotate_left, rotate_right;
     private TextView turnText;
     private GameBoard gameBoard;
     private Cell selectedCell;
     private Color color;
-
+    private SharedPreferences prefs;
     private BluetoothSocket btSocket;
     final int MESSAGE_READ = 8888;
     private boolean userTurn;
@@ -45,6 +51,13 @@ public class GameLogic extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        username = getIntent().getStringExtra("username");
+        prefs =  this.getSharedPreferences("scores", MODE_PRIVATE);
+        if(!prefs.contains(username)) {
+            System.out.println("ADDING IN BECAUSE PREFS HAS NO ME FOR " + username);
+            updateScores(username, "0,0");
+        }
 
         selectedCell = null;
         gameBoard = (GameBoard) findViewById(R.id.board);
@@ -76,6 +89,37 @@ public class GameLogic extends FragmentActivity {
         thread = new ConnectedThread(btSocket);
         thread.runThread();
 
+        // Send score on initialization
+        String scoreSend = "score" + "," + username + "," + prefs.getString(username, "ERROR") + ",";
+        thread.write(scoreSend.getBytes());
+    }
+
+    @Override
+    public void onPause() {
+        thread.cancel();
+        super.onPause();
+    }
+
+    public void updateScores(String key, String val) {
+        SharedPreferences.Editor prefsEditor = prefs.edit();
+        prefsEditor.putString(key, val);
+        prefsEditor.apply();
+    }
+
+    public void addWinLoss(String name, boolean win) {
+        String scores = prefs.getString(name, "0,0");
+        String[] splits = scores.split(",");
+        int wins = Integer.parseInt(splits[0]);
+        int loses = Integer.parseInt(splits[1]);
+        System.out.println("ADDING IN FOR " + name + " with win " + win + " and loss " + loses);
+        if(win)
+            wins++;
+        else
+            loses++;
+        System.out.println("ADDING IN FOR " + name + " with win " + win + " and loss " + loses);
+        SharedPreferences.Editor prefsEditor = prefs.edit();
+        prefsEditor.putString(name, wins + "," + loses);
+        prefsEditor.apply();
     }
 
     // 0 to shoot black's laser, 1 to shoot red's laser
@@ -132,6 +176,11 @@ public class GameLogic extends FragmentActivity {
                 break;
             }
             if(out == -1) {
+                if(currPiece.getType() == Piece.Type.PHARAOH) {
+                    gameOver(currPiece.getBitmapColor());
+                    break;
+
+                }
                 currCell.setPiece(null);
                 currCell.setCurrentlySelected(false);
                 break;
@@ -175,6 +224,49 @@ public class GameLogic extends FragmentActivity {
         }
         gameBoard.invalidate();
     }
+
+    public void gameOver(GameLogic.Color color) {
+        // close connection
+        thread.cancel();
+
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create(); //Read Update
+        alertDialog.setTitle("GAME OVER!");
+        if(color == this.color) {
+            alertDialog.setMessage("You Lost!");
+            System.out.println("ADDING IN LOSS FOR us " + username);
+            addWinLoss(username, false);
+            System.out.println("ADDING IN WIN FOR " + enemyUsername);
+            addWinLoss(enemyUsername, true);
+        } else {
+            alertDialog.setMessage("You Win!");
+            System.out.println("ADDING IN WIN FOR US " + username);
+            addWinLoss(username, true);
+            System.out.println("ADDING IN LOSS FOR " + enemyUsername);
+            addWinLoss(enemyUsername, false);
+        }
+
+        final GameLogic act = this;
+        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "High Scores", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(act, HighScores.class);
+                intent.putExtra("username", username);
+                startActivity(intent);
+            }
+        });
+
+        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Main Menu", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(act, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        alertDialog.show();
+    }
+
 
     public int oppositeSide(int side) {
         switch (side) {
@@ -288,9 +380,19 @@ public class GameLogic extends FragmentActivity {
         public void handleMessage(Message msg) {
             byte[] writeBuf = (byte[]) msg.obj;
             String writeMessage = new String(writeBuf);
-            Toast.makeText(getApplicationContext(), "message received: " + writeMessage,Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "message received: " + writeMessage,Toast.LENGTH_SHORT).show();
 
             String[] instructions = writeMessage.split(",");
+
+            // Special case where we are first connecting and getting the score
+            if(instructions[0].equals("score")) {
+                String name = instructions[1];
+                enemyUsername = name;
+                String score = instructions[2] + "," + instructions[3];
+                System.out.println("ADDING IN THE FIRST REQUEST SCORE FOR " + name);
+                updateScores(name, score);
+                return;
+            }
 
             Cell changingCell = gameBoard.getCell(Integer.parseInt(instructions[0]), Integer.parseInt(instructions[1]));
 

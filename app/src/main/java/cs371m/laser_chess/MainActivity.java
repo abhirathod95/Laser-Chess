@@ -8,7 +8,6 @@ package cs371m.laser_chess;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.Application;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -40,7 +39,6 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -52,6 +50,7 @@ public class MainActivity extends FragmentActivity {
     Boolean loggedIn; // Facebook
     Boolean cancel;
     String username;
+    String passingName;
     UUID uid = UUID.fromString("80d2bf7f-a00e-4951-9a33-6434ca4e27d8"); // unique to this app
 
     AcceptThread hostThread;
@@ -187,12 +186,16 @@ public class MainActivity extends FragmentActivity {
             }
         } else if (requestCode == FACEBOOK_LOGIN_CODE){
             callbackManager.onActivityResult(requestCode, resultCode, data);
-        } else if (requestCode == OPPONENT_LIST_ACTIVITY && resultCode == Activity.RESULT_OK) {
-            Bundle bundle = data.getExtras();
-            BluetoothDevice target = bundle.getParcelable("targetDevice");
+        } else if (requestCode == OPPONENT_LIST_ACTIVITY) {
+            mDeviceList.clear();
+            if(resultCode == Activity.RESULT_OK) {
+                Bundle bundle = data.getExtras();
+                BluetoothDevice target = bundle.getParcelable("targetDevice");
 
-            ConnectThread connectThread = new ConnectThread(target);
-            connectThread.startConnect();
+                ConnectThread connectThread = new ConnectThread(target);
+                connectThread.startConnect();
+
+            }
         }
     }
 
@@ -242,6 +245,8 @@ public class MainActivity extends FragmentActivity {
                 Profile profile = Profile.getCurrentProfile();
                 username = "Laser-Chess: " +profile.getFirstName() + " " + profile.getLastName();
                 mBluetoothAdapter.setName(username);
+                passingName = profile.getFirstName() + " " + profile.getLastName();
+
 
                 // LOL this is absolutely retarded but it is the only way.
                 Method method;
@@ -379,7 +384,11 @@ public class MainActivity extends FragmentActivity {
         hostingDialogue.dismiss();
 
         Intent newGame = new Intent(this, GameLogic.class);
+        newGame.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         newGame.putExtra("host", host);
+        if(passingName == null)
+            passingName = "Anon";
+        newGame.putExtra("username", passingName);
 
         SocketManager.setSocket(mainSocket);
         startActivity(newGame);

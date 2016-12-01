@@ -50,15 +50,14 @@
         <meta-data android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
 
-
-
-
-
         <activity android:name=".GameLogic"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
 
+        <activity android:name=".HighScores"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+        </activity>
 
         <activity
             android:name=".OpponentList"
