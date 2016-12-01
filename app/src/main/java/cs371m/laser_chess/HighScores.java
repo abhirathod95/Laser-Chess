@@ -52,8 +52,10 @@ public class HighScores extends FragmentActivity {
         ((Button) findViewById(R.id.mainMenu)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(act, MainActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(act, MainActivity.class);
+                //startActivity(intent);
+                // changed to just call finish
+                finish();
             }
         });
 

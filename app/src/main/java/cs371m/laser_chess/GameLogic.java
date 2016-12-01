@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,14 +45,14 @@ public class GameLogic extends FragmentActivity {
     private BluetoothSocket btSocket;
     final int MESSAGE_READ = 8888;
     private boolean userTurn;
-    ConnectedThread thread; // THIS IS OUR BIG BAD THREAD THAT DOES ALL MESSAGE EXCHANGE.
-    // I INITIALIZE THIS BITCH FOR YOU SO YOU DONT HAVE TO, JUST CALL thread.write() WHEN A PLAYER
-    // MOVES A PIECE OR SOMESHIT YOU HANDLE THE REST. EXAMPLE IS IN METHODS BELOW.
+    ConnectedThread thread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
 
         username = getIntent().getStringExtra("username");
         prefs =  this.getSharedPreferences("scores", MODE_PRIVATE);
@@ -221,7 +223,8 @@ public class GameLogic extends FragmentActivity {
 
     public void gameOver(GameLogic.Color color) {
         // close connection
-        thread.cancel();
+        // moved to onDestroy
+        // thread.cancel();
 
         AlertDialog alertDialog = new AlertDialog.Builder(this).create(); //Read Update
         alertDialog.setTitle("GAME OVER!");
@@ -246,14 +249,17 @@ public class GameLogic extends FragmentActivity {
                 Intent intent = new Intent(act, HighScores.class);
                 intent.putExtra("username", username);
                 startActivity(intent);
+                finish();
             }
         });
 
         alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Main Menu", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(act, MainActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(act, MainActivity.class);
+                //startActivity(intent);
+                //absolutely retarded
+                finish();
             }
         });
 
@@ -455,8 +461,7 @@ public class GameLogic extends FragmentActivity {
     // code adapted from android bluetooth documentation.
     // changed the threading to run in background thread so
     // that the ui thread doesn't cock itself
-    //
-    // boilerplate code with severe threading alterations
+
     private class ConnectedThread{
         private final BluetoothSocket mmSocket;
         private final InputStream mmInStream;
@@ -519,6 +524,10 @@ public class GameLogic extends FragmentActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        thread.cancel();
 
-
+    }
 }

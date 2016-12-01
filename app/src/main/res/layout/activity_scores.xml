@@ -14,35 +14,6 @@
         android:paddingBottom="10dp"
         android:textSize="50sp"/>
 
-    <LinearLayout
-        android:id="@+id/titles"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/highScoresText">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="Name"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="Wins"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="Loses"/>
-    </LinearLayout>
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/high_scores_list_view"
         android:layout_width="match_parent"
@@ -72,6 +43,36 @@
             android:layout_height="wrap_content"
             android:text="Reset Scores"/>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/titles"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/highScoresText"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="Name"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="Wins"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="Losses"/>
     </LinearLayout>
 
 </RelativeLayout>

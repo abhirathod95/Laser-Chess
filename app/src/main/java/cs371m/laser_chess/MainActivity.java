@@ -273,7 +273,7 @@ public class MainActivity extends FragmentActivity {
             Toast.makeText(getApplicationContext(), "Log in to find a match!",Toast.LENGTH_SHORT).show();
         }
 
-        if (mBluetoothAdapter == null) {
+        else if (mBluetoothAdapter == null) {
             // Device does not support Bluetooth
             Toast.makeText(getApplicationContext(), "No Bluetooth On Device. No Play.",Toast.LENGTH_SHORT).show();
         } else {
