@@ -435,7 +435,6 @@ public class MainActivity extends FragmentActivity {
                                     mainSocket=socket;
                                     startGame(socket, true);
                                 } catch (Exception e) {
-                                    // go fuck yourself
                                 }
                                 break;
                             }
