@@ -17,18 +17,18 @@ The most important piece. The objective of the game is to direct a laser into yo
 opponent's Pharaoh, destroying it and thus winning you the match. No special properties
 other than its active/destroyed status deciding the victor.
 
-Scarab (per player)
+Scarab (2 per player)
 This piece holds a diagonally oriented, two sided mirror. Thus, it is unable to be destroyed
 since there is no way to direct a laser to a non mirrored side of the piece. Scarabs may
 move into an already occupied tile, switching places with the previous occupant of the tile.
 These versatile pieces are small in number and are typically the key to gaining an 
 advantage during the course of a match.
 
-Anubis (per player) 
+Anubis (2 per player) 
 An Anubis is a defensive piece that is indestructible from the front, although its two
 sides and rear are vulnerable to attack.
 
-Pyramid (per player)
+Pyramid (7 per player)
 The Pyramid holds a single-sided, diagonally oriented mirror, making it vulnerable from two 
 sides. They make up the bulk of pieces that a player will control.
 
