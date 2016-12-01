@@ -94,12 +94,6 @@ public class GameLogic extends FragmentActivity {
         thread.write(scoreSend.getBytes());
     }
 
-    @Override
-    public void onPause() {
-        thread.cancel();
-        super.onPause();
-    }
-
     public void updateScores(String key, String val) {
         SharedPreferences.Editor prefsEditor = prefs.edit();
         prefsEditor.putString(key, val);

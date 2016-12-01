@@ -23,6 +23,14 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/rotate_left"
                 android:id="@+id/rotate_left"/>
+            <ImageButton
+                android:layout_toRightOf="@id/rotate_left"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rotate_right"
+                android:id="@+id/rotate_right"/>
         </RelativeLayout>
 
         <TextView
@@ -39,13 +47,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="15sp"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Scores"
-            android:onClick="scoresClick"/>
-
     </LinearLayout>
 
     <cs371m.laser_chess.GameBoard
