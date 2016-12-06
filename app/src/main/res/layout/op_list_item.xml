@@ -21,6 +21,7 @@
         android:layout_height="50dp"
         android:id="@+id/play_but"
         android:layout_toEndOf="@+id/op_name"
-        android:layout_marginLeft="15dp" />
+        android:layout_marginLeft="15dp"
+        android:focusable="false"/>
 
 </RelativeLayout>

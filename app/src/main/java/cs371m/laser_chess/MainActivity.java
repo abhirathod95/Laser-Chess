@@ -73,6 +73,11 @@ public class MainActivity extends FragmentActivity {
 
     private Button highScores;
 
+    Handler timeoutHandler;
+    Runnable runnable;
+
+    Boolean hasBeenOpened;
+
     @Override
     /**
      * big bad oncreate. avert your eyes if you are not used to graphic displays of gore
@@ -82,6 +87,7 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        hasBeenOpened = false;
         cancel = false;
         // set it to null initially
         username = null;
@@ -123,7 +129,7 @@ public class MainActivity extends FragmentActivity {
         highScores.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent.putExtra("username", username);
+                intent.putExtra("username", passingName);
                 startActivity(intent);
             }
         });
@@ -207,7 +213,6 @@ public class MainActivity extends FragmentActivity {
             if(resultCode == Activity.RESULT_OK) {
                 Bundle bundle = data.getExtras();
                 BluetoothDevice target = bundle.getParcelable("targetDevice");
-
                 ConnectThread connectThread = new ConnectThread(target);
                 connectThread.startConnect();
 
@@ -235,7 +240,16 @@ public class MainActivity extends FragmentActivity {
                     // Start the OpponentList Activity
                     Intent newIntent = new Intent(MainActivity.this, OpponentList.class);
                     newIntent.putParcelableArrayListExtra("devicelist", mDeviceList);
-                    startActivityForResult(newIntent, OPPONENT_LIST_ACTIVITY);
+
+                    if (timeoutHandler!=null){
+                        timeoutHandler.removeCallbacks(runnable);
+                    }
+
+                    if (!hasBeenOpened) {
+                        startActivityForResult(newIntent, OPPONENT_LIST_ACTIVITY);
+                        hasBeenOpened = true;
+                    }
+
                 }
                 cancel = false;
             }
@@ -301,6 +315,7 @@ public class MainActivity extends FragmentActivity {
                 Profile profile = Profile.getCurrentProfile();
                 passingName = profile.getFirstName() + " " + profile.getLastName();
 
+                hasBeenOpened = false;
                 mDeviceList = new ArrayList<BluetoothDevice>();
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION);
             }
@@ -334,15 +349,16 @@ public class MainActivity extends FragmentActivity {
                     // DISCOVERY_FINISHED in broadcast receiver
                     findingDialogue.show();
 
-                    new java.util.Timer().schedule(
-                            new java.util.TimerTask() {
-                                @Override
-                                public void run() {
-                                    mBluetoothAdapter.cancelDiscovery();
-                                }
-                            },
-                            10000
-                    );
+
+                    timeoutHandler = new Handler();
+                    runnable = new Runnable() {
+                        @Override
+                        public void run() {
+                            if (mBluetoothAdapter.isDiscovering()) {
+                                mBluetoothAdapter.cancelDiscovery();
+                            }
+                        }
+                    }; timeoutHandler.postDelayed(runnable, 5000);
 
 
                 } else {
@@ -367,6 +383,10 @@ public class MainActivity extends FragmentActivity {
         {
 
         }
+        if(timeoutHandler != null)
+            timeoutHandler.removeCallbacks(runnable);
+        if(hostThread != null)
+            hostThread.cancel();
         super.onDestroy();
 
     }
@@ -411,7 +431,6 @@ public class MainActivity extends FragmentActivity {
      *  I distinguish the host for the sole reason of knowing who goes first.
      */
     public void startGame(BluetoothSocket sock, Boolean host){
-
         hostingDialogue.dismiss();
 
         Intent newGame = new Intent(this, GameLogic.class);
@@ -541,4 +560,6 @@ public class MainActivity extends FragmentActivity {
             } catch (IOException e) { }
         }
     }
+
+
 }

@@ -34,7 +34,7 @@ public class GameLogic extends FragmentActivity {
         BLACK, RED
     }
 
-    private int MAX_TIME = 16;
+    private int MAX_TIME = 60;
 
     private String username;
     private String enemyUsername;
@@ -566,7 +566,9 @@ public class GameLogic extends FragmentActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        timeoutHandler.removeCallbacks(runnable);
+        if (timeoutHandler != null) {
+            timeoutHandler.removeCallbacks(runnable);
+        }
         thread.cancel();
 
     }
