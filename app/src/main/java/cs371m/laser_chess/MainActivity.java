@@ -84,15 +84,6 @@ public class MainActivity extends FragmentActivity {
         cancel = false;
         // set it to null initially
         username = null;
-        highScores = (Button) findViewById(R.id.highscore_but);
-        final Intent intent = new Intent(this, HighScores.class);
-        highScores.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent.putExtra("username", username);
-                startActivity(intent);
-            }
-        });
 
         findingDialogue = new ProgressDialog(this);
         findingDialogue.setCancelable(false);
@@ -124,6 +115,17 @@ public class MainActivity extends FragmentActivity {
         callbackManager = CallbackManager.Factory.create();
 
         setContentView(R.layout.activity_main);
+
+
+        highScores = (Button) findViewById(R.id.highscore_but);
+        final Intent intent = new Intent(this, HighScores.class);
+        highScores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent.putExtra("username", username);
+                startActivity(intent);
+            }
+        });
 
         AppEventsLogger.activateApp(this);
         LoginButton loginButton = (LoginButton) findViewById(R.id.login_but);
