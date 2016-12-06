@@ -48,6 +48,7 @@ public class GameLogic extends FragmentActivity {
     private Handler timeoutHandler;
     private int time;
     private boolean ourTurn;
+    private Runnable runnable;
     ConnectedThread thread;
 
     @Override
@@ -75,7 +76,7 @@ public class GameLogic extends FragmentActivity {
         time = 0;
         timeoutHandler = new Handler();
 
-        Runnable runnable = new Runnable() {
+        runnable = new Runnable() {
             @Override
             public void run() {
                 time++;
@@ -563,6 +564,7 @@ public class GameLogic extends FragmentActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        timeoutHandler.removeCallbacks(runnable);
         thread.cancel();
 
     }
