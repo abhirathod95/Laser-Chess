@@ -34,6 +34,8 @@ public class GameLogic extends FragmentActivity {
         BLACK, RED
     }
 
+    private int MAX_TIME = 16;
+
     private String username;
     private String enemyUsername;
     private ImageButton rotate_left, rotate_right;
@@ -73,15 +75,15 @@ public class GameLogic extends FragmentActivity {
         rotate_right.setEnabled(false);
         setOnClickListeners();
 
-        time = 0;
+        time = MAX_TIME;
         timeoutHandler = new Handler();
 
         runnable = new Runnable() {
             @Override
             public void run() {
-                time++;
+                time--;
                 timeText.setText(String.format(getResources().getString(R.string.time_text), time));
-                if (time > 15) {
+                if (time <= 0) {
                     timeoutHandler.removeCallbacks(this);
                     if(ourTurn)
                         gameOver(color);
@@ -385,7 +387,7 @@ public class GameLogic extends FragmentActivity {
         shootLaser(color);
         turnText.setText(getText(R.string.player_two_turn));
         ourTurn = false;
-        time = 0;
+        time = MAX_TIME;
     }
 
     public void setOnClickListeners() {
@@ -451,7 +453,7 @@ public class GameLogic extends FragmentActivity {
             turnText.setText(getText(R.string.your_turn));
             gameBoard.setOnTouchListener(playing);
             ourTurn = true;
-            time = 0;
+            time = MAX_TIME;
         }
     };
 
