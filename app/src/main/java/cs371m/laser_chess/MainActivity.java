@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
+import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -332,6 +333,18 @@ public class MainActivity extends FragmentActivity {
                     // Dialogue closes if user clicks cancel, or the scan finishes by itself with
                     // DISCOVERY_FINISHED in broadcast receiver
                     findingDialogue.show();
+
+                    new java.util.Timer().schedule(
+                            new java.util.TimerTask() {
+                                @Override
+                                public void run() {
+                                    mBluetoothAdapter.cancelDiscovery();
+                                }
+                            },
+                            10000
+                    );
+
+
                 } else {
                     // permission denied, boo!
                     Toast.makeText(getApplicationContext(), "Enable location permissions to find opponents.",Toast.LENGTH_SHORT).show();
