@@ -92,8 +92,8 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                cancel();
                 mBluetoothAdapter.cancelDiscovery();
+                cancel();
             }
         });
 
