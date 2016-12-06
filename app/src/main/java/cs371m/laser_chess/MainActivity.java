@@ -297,6 +297,9 @@ public class MainActivity extends FragmentActivity {
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             } else {
+                Profile profile = Profile.getCurrentProfile();
+                passingName = profile.getFirstName() + " " + profile.getLastName();
+
                 mDeviceList = new ArrayList<BluetoothDevice>();
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION);
             }
