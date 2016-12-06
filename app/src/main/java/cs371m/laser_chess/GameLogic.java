@@ -45,6 +45,9 @@ public class GameLogic extends FragmentActivity {
     private BluetoothSocket btSocket;
     final int MESSAGE_READ = 8888;
     private boolean userTurn;
+    private Handler timeoutHandler;
+    private int time;
+    private boolean ourTurn;
     ConnectedThread thread;
 
     @Override
@@ -69,6 +72,29 @@ public class GameLogic extends FragmentActivity {
         rotate_right.setEnabled(false);
         setOnClickListeners();
 
+        time = 0;
+        timeoutHandler = new Handler();
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                time++;
+                if (time > 15) {
+                    timeoutHandler.removeCallbacks(this);
+                    if(ourTurn)
+                        gameOver(color);
+                    else {
+                        if(color == Color.BLACK)
+                            gameOver(Color.RED);
+                        else
+                            gameOver(Color.BLACK);
+                    }
+                }else
+                    timeoutHandler.postDelayed(this, 1000);
+            }
+        };
+
+
         TextView colorText = (TextView) findViewById(R.id.colorText);
         turnText = (TextView) findViewById(R.id.turnText);
 
@@ -79,11 +105,13 @@ public class GameLogic extends FragmentActivity {
             colorText.setText(getText(R.string.black_color));
             turnText.setText(getText(R.string.your_turn));
             gameBoard.setOnTouchListener(playing);
+            ourTurn = true;
         } else {
             color = Color.RED;
             colorText.setText(getText(R.string.red_color));
             turnText.setText(getText(R.string.player_two_turn));
             gameBoard.setOnTouchListener(notPlaying);
+            ourTurn = false;
         }
         gameBoard.setColor(color);
         gameBoard.invalidate();
@@ -94,6 +122,7 @@ public class GameLogic extends FragmentActivity {
         // Send score on initialization
         String scoreSend = "score" + "," + username + "," + prefs.getString(username, "ERROR") + ",";
         thread.write(scoreSend.getBytes());
+        timeoutHandler.post(runnable);
     }
 
     public void updateScores(String key, String val) {
@@ -351,6 +380,8 @@ public class GameLogic extends FragmentActivity {
         // shoot our laser
         shootLaser(color);
         turnText.setText(getText(R.string.player_two_turn));
+        ourTurn = false;
+        time = 0;
     }
 
     public void setOnClickListeners() {
@@ -415,6 +446,8 @@ public class GameLogic extends FragmentActivity {
 
             turnText.setText(getText(R.string.your_turn));
             gameBoard.setOnTouchListener(playing);
+            ourTurn = true;
+            time = 0;
         }
     };
 
