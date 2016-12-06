@@ -66,11 +66,12 @@ public class HighScores extends FragmentActivity {
                 highScores.clear();
                 SharedPreferences.Editor edit = prefs.edit();
                 edit.clear();
-                edit.putString(username, "0,0");
+                if(username != null) {
+                    edit.putString(username, "0,0");
+                    highScores.add(new Score(username, "0,0"));
+                    adapter.notifyDataSetChanged();
+                }
                 edit.apply();
-
-                highScores.add(new Score(username, "0,0"));
-                adapter.notifyDataSetChanged();
             }
         });
     }

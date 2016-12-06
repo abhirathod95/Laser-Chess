@@ -70,6 +70,8 @@ public class MainActivity extends FragmentActivity {
 
     ArrayList<BluetoothDevice> mDeviceList;
 
+    private Button highScores;
+
     @Override
     /**
      * big bad oncreate. avert your eyes if you are not used to graphic displays of gore
@@ -80,6 +82,17 @@ public class MainActivity extends FragmentActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         cancel = false;
+        // set it to null initially
+        username = null;
+        highScores = (Button) findViewById(R.id.highscore_but);
+        final Intent intent = new Intent(this, HighScores.class);
+        highScores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent.putExtra("username", username);
+                startActivity(intent);
+            }
+        });
 
         findingDialogue = new ProgressDialog(this);
         findingDialogue.setCancelable(false);
