@@ -3,6 +3,7 @@ package cs371m.laser_chess;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.widget.Toast;
 
 /**
  * Created by Abhi on 11/9/2016.
@@ -18,6 +19,28 @@ public class Scarab extends Piece{
         } else {
             bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.scarab);
         }
+    }
+
+    @Override
+    public boolean move(Cell from, Cell to) {
+        if(Math.abs(to.getX() - from.getX()) > (to.getWidth() + 1) || Math.abs(to.getY() - from.getY()) > (to.getHeight() + 1)) {
+            Toast.makeText(mContext, "Invalid Move! You can only move one space in a turn!", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if(from == to) {
+            return false;
+        }
+
+        if(to.getPiece() == null) {
+            to.setPiece(from.getPiece());
+            from.setPiece(null);
+        } else if(to.getPiece().getType() == Type.PYRAMID || to.getPiece().getType() == Type.ANUBIS){
+            Piece temp = to.getPiece();
+            to.setPiece(from.getPiece());
+            from.setPiece(temp);
+        }else
+            return false;
+        return true;
     }
 
     @Override
