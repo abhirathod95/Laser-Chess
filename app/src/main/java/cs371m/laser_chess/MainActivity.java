@@ -358,7 +358,7 @@ public class MainActivity extends FragmentActivity {
                                 mBluetoothAdapter.cancelDiscovery();
                             }
                         }
-                    }; timeoutHandler.postDelayed(runnable, 5000);
+                    }; timeoutHandler.postDelayed(runnable, 10000);
 
 
                 } else {
