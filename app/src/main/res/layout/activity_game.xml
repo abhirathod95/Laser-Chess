@@ -47,6 +47,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/timeText"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"/>
     </LinearLayout>
 
     <cs371m.laser_chess.GameBoard

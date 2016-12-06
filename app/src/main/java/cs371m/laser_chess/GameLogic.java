@@ -37,7 +37,7 @@ public class GameLogic extends FragmentActivity {
     private String username;
     private String enemyUsername;
     private ImageButton rotate_left, rotate_right;
-    private TextView turnText;
+    private TextView turnText, timeText;
     private GameBoard gameBoard;
     private Cell selectedCell;
     private Color color;
@@ -79,6 +79,7 @@ public class GameLogic extends FragmentActivity {
             @Override
             public void run() {
                 time++;
+                timeText.setText(String.format(getResources().getString(R.string.time_text), time));
                 if (time > 15) {
                     timeoutHandler.removeCallbacks(this);
                     if(ourTurn)
@@ -97,6 +98,8 @@ public class GameLogic extends FragmentActivity {
 
         TextView colorText = (TextView) findViewById(R.id.colorText);
         turnText = (TextView) findViewById(R.id.turnText);
+        timeText = (TextView) findViewById(R.id.timeText);
+        timeText.setText(String.format(getResources().getString(R.string.time_text), time));
 
         // Set the colors and make sure that host is always black
         userTurn = getIntent().getBooleanExtra("host", false);

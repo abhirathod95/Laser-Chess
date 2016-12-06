@@ -10,4 +10,5 @@
     <string name="red_color">Your Color: RED</string>
     <string name="not_your_turn">Please wait for the other player to finish their turn!</string>
     <string name="invalid_rotate">Invalid Move! Rotation not allowed.</string>
+    <string name="time_text">Time Remaining: %d</string>
 </resources>
